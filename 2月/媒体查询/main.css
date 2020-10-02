@@ -1,0 +1,180 @@
+main {
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+  background-color: #F3F3EF;
+}
+main ul {
+  list-style: none;
+}
+main a {
+  color: #7f7f7f;
+}
+main article {
+  margin: auto;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(12, 1fr);
+}
+main article section {
+  grid-column: span 9;
+  border: 1px solid #DFDFDF;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 1px #7f7f7f;
+}
+main article section header {
+  padding: 1rem 1.5rem;
+  color: #7f7f7f;
+}
+main article section ul {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #DFDFDF;
+  border-top: 1px solid #DFDFDF;
+}
+main article section ul li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #DFDFDF;
+  padding: 1rem 0;
+}
+main article section ul li:hover a {
+  color: #0056B3;
+}
+main article section ul li:last-child {
+  border-bottom: none;
+}
+main article section footer {
+  padding: 1rem 1.5rem;
+  display: flex;
+}
+main article section footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid #DEE2E6;
+  color: #17A2B8;
+}
+main article section footer a:nth-child(2) {
+  background-color: #17A2B8;
+  color: white;
+}
+main article section footer a:hover:not(:nth-child(2)) {
+  background-color: #E9ECEF;
+}
+main article section footer a:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+main article section footer a:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+main article aside {
+  grid-column: span 3;
+  color: #7f7f7f;
+}
+main article aside > div:nth-child(1) {
+  margin-bottom: 10px;
+  border: 1px solid #DFDFDF;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 1px #7f7f7f;
+}
+main article aside > div:nth-child(1) header {
+  padding: 1rem 1.5rem;
+  color: #7f7f7f;
+}
+main article aside > div:nth-child(1) span {
+  display: block;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #DFDFDF;
+  border-bottom: 1px solid #DFDFDF;
+}
+main article aside > div:nth-child(1) footer {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem 1.5rem;
+}
+main article aside > div:nth-child(1) footer div:nth-child(1) {
+  padding: 0.5rem 1rem;
+  border: 1px solid #28A745;
+  border-radius: 7px;
+}
+main article aside > div:nth-child(1) footer div:nth-child(1) i.fa-book,
+main article aside > div:nth-child(1) footer div:nth-child(1) a {
+  color: #28A745;
+}
+main article aside > div:nth-child(1) footer div:nth-child(1):hover {
+  background-color: #28A745;
+}
+main article aside > div:nth-child(1) footer div:nth-child(1):hover i.fa-book,
+main article aside > div:nth-child(1) footer div:nth-child(1):hover a {
+  color: white;
+}
+main article aside > div:nth-child(1) footer div:nth-child(2) {
+  padding: 0.5rem 1rem;
+  border: 1px solid #DC3545;
+  border-radius: 7px;
+}
+main article aside > div:nth-child(1) footer div:nth-child(2) i.fa-book,
+main article aside > div:nth-child(1) footer div:nth-child(2) a {
+  color: #DC3545;
+}
+main article aside > div:nth-child(1) footer div:nth-child(2):hover {
+  background-color: #DC3545;
+}
+main article aside > div:nth-child(1) footer div:nth-child(2):hover i.fa-book,
+main article aside > div:nth-child(1) footer div:nth-child(2):hover a {
+  color: white;
+}
+main article aside > div:nth-child(2) {
+  border: 1px solid #DFDFDF;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 1px #7f7f7f;
+}
+main article aside > div:nth-child(2) header {
+  padding: 1rem 1.5rem;
+  color: #7f7f7f;
+}
+main article aside > div:nth-child(2) li {
+  padding: 1rem 1.5rem;
+  border-top: solid 1px #DFDFDF;
+}
+main article aside > div:nth-child(2) li a:hover {
+  color: #0056B3;
+}
+@media only screen and (max-width: 768px) {
+  main article {
+    width: 85vw;
+  }
+  main article section {
+    grid-column: span 12;
+  }
+  main article aside {
+    grid-column: span 12;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 960px) {
+  main article {
+    width: 730px;
+  }
+  main article section {
+    grid-column: span 12;
+  }
+  main article aside {
+    grid-column: span 12;
+  }
+}
+@media only screen and (min-width: 960px) {
+  article {
+    width: 940px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  article {
+    width: 1180px;
+  }
+}

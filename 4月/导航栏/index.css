@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #e74c3c;
+}
+
+body {
+    padding-top: 50px;
+}
+
+.one {
+    width: 60vw;
+    margin: 0 auto;
+}
+
+.one>li {
+    float: left;
+    margin-left: 15px;
+    position: relative;
+    /* overflow: hidden; */
+    /* height: 32px; */
+}
+
+.one .nav {
+    display: inline-block;
+    padding: 6px 16px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+}
+
+.two {
+    margin-top: 2px;
+    position: absolute;
+    width: 100%;
+    /* display: none; */
+}
+
+.two a {
+    margin: 2px 0;
+    display: inline-block;
+    padding: 6px 0;
+    width: 100%;
+    text-align: center;
+    border-radius: 3px;
+    background-image: linear-gradient(to bottom, #9795f0 0%, #fbc8d4 100%);
+    opacity: 0;
+    transform: rotateY(180deg);
+    /* transition: 1s; */
+}
+
+.one>li:hover .nav {
+    background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
+}
+
+.two a:hover {
+    background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);
+    text-indent: 4px;
+}
+
+.one>li:hover .two {
+    z-index: 2;
+}
+
+.one li:hover .two a {
+    transform: rotateY(360deg);
+    opacity: 1;
+}
+
+.two li:nth-child(1) a {
+    transition: .9s;
+    transition-delay: .1s;
+}
+
+.two li:nth-child(2) a {
+    transition: .8s;
+    transition-delay: .2s;
+}
+
+.two li:nth-child(3) a {
+    transition: .7s;
+    transition-delay: .3s;
+}
+
+.two li:nth-child(4) a {
+    transition: .6s;
+    transition-delay: .4s;
+}
+
+.two li:nth-child(5) a {
+    transition: .5s;
+    transition-delay: .5s;
+}
+
+.box {
+    position: absolute;
+    top: 84px;
+    width: 100vw;
+    height: 500px;
+    /* background-color: sandybrown; */
+}

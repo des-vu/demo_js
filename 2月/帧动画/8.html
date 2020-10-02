@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background-color: wheat;
+        }
+        
+        div {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: radial-gradient(at center, rgb(231, 126, 34), rgb(255, 119, 0));
+            animation: jump 4s infinite;
+            animation-timing-function: ease-in;
+        }
+        
+        div:nth-child(1) {
+            bottom: 80px;
+            left: 80px;
+        }
+        
+        div:nth-child(2) {
+            bottom: 80px;
+            right: 80px;
+            animation-delay: .5s;
+            animation-fill-mode: backwards;
+        }
+        
+        @keyframes jump {
+            0% {
+                transform: translateY(-60vh);
+                animation-timing-function: ease-in;
+            }
+            20%,
+            60%,
+            to {
+                transform: translateY(0);
+                animation-timing-function: ease-out;
+            }
+            40% {
+                transform: translateY(-40vh);
+                animation-timing-function: ease-in;
+            }
+            80% {
+                transform: translateY(-30vh);
+                animation-timing-function: ease-in;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+</body>
+
+</html>

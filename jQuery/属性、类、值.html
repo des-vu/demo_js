@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+        }
+        
+        .active {
+            background-color: aqua;
+        }
+        
+        .box {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <img src="./" alt="">
+    <input type="checkbox" name="" id="" checked>
+    <p></p>
+    <input type="text">
+    <select name="" id="" multiple>
+        <option value="">香蕉</option>
+        <option value="果子">果子</option>
+        <option value="">兔子</option>
+        <option value="mmt">猫猫头</option>
+    </select>
+    <input type="radio" name="a" id="" value="0">男
+    <input type="radio" name="a" id="" value="1">女
+    <input type="checkbox" name="b" id="" value="0">多个
+    <input type="checkbox" name="b" id="" value="1">一个
+    <input type="checkbox" name="rt" id="" checked>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+    <script src="./jquery.js"></script>
+    <script>
+        $(function() {
+            //设置属性值
+            $('.box').attr('id', 'di').attr('date', 'wrap');
+            $('div').attr({
+                box: 'a',
+                title: '盒子'
+            });
+            //获取属性值
+            console.log($('div').attr('id'));
+            //类 class
+            $('p').click(function() {
+                $('p').toggleClass('active');
+            }).click(function() {
+                if ($('p').hasClass('box')) {
+                    $('p').removeClass('box');
+                } else {
+                    $('p').addClass('box');
+                    //可添加移除多个类名
+                }
+            });
+            $().html() //.innerHTML;读取，写入
+            $('p').html('jdf dk dk se eix');
+            console.log($('p').html());
+            $().text() //.innerText;读取，写入
+            $('p').text('jdf dk dk se eix ero te ro');
+            console.log($('p').text());
+            //input
+            $('input[type=text]').blur(function() {
+                console.log($('input[type=text]').val());
+            });
+            $('input[type=text]').val('大笨比');
+            $('select').val(['果子', 'mmt']);
+            //默认选中必须有[]
+            $('input[type=radio]').val(['1']);
+            // $('input[type=checkbox]').val(['1']);
+            $('input[value=0]').attr('checked', 'checked');
+            $('.box').children(); //子元素非后代元素
+            $('.box').next(); //紧邻的兄弟元素
+            $('.box').parent(); //获取父元素
+            $('.box').parents(); //父元素们，祖先元素
+            $('.box').prev(); //前一个兄弟元素
+            $('.box').eq(); //第几个
+            //siblings  选项卡
+            $('button').click(function() {
+                $(this).css('backgroundColor', 'red').siblings('button').css('backgroundColor', '#fff');
+                // $(this).css('backgroundColor', 'red').parent().siblings('li').children().css('backgroundColor', '#fff');
+            })
+        })
+    </script>
+</body>
+
+</html>

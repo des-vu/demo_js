@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .page {
+            width: 500px;
+            height: 100px;
+            /* border: 1px solid black; */
+            margin: 100px auto;
+        }
+        
+        .page a {
+            display: inline-block;
+            color: blue;
+            height: 25px;
+            line-height: 25px;
+            padding: 0 10px;
+            border: 1px solid #ddd;
+            margin: 0 2px;
+            border-radius: 4px;
+            user-select: none;
+        }
+        
+        .page .disabled {
+            display: inline-block;
+            color: blue;
+            height: 25px;
+            line-height: 25px;
+            padding: 0 10px;
+            border: 1px solid #ddd;
+            margin: 0 2px;
+            border-radius: 4px;
+            color: #ddd;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page"></div>
+    <script src="index.js"></script>
+    <script>
+        var page = document.getElementsByClassName('page')[0];
+        createPage(page, {
+            pageCount: 16,
+            current: 7,
+            backFn: function(page) {
+                this.current = page;
+            }
+        });
+    </script>
+</body>
+
+</html>

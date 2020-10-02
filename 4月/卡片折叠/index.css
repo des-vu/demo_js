@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #1abc9c;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 5% 10%;
+    perspective: 4500px;
+    transform-style: preserve-3d;
+    transform: rotateX(15deg);
+}
+
+.left,
+.middle,
+.right {
+    position: relative;
+    width: 33%;
+    height: 100%;
+    background-color: white;
+    float: left;
+    border-radius: 10px;
+    border: 1px solid #7f8c8d;
+    color: #2c3e50;
+    word-spacing: 5px;
+}
+
+.middle {
+    padding: 20px 30px;
+}
+
+h1 {
+    letter-spacing: 3px;
+}
+
+p {
+    margin: 20px 0;
+    line-height: 1.5em;
+}
+
+h1 span {
+    display: inline-block;
+    padding: 10px 0;
+    border-bottom: 3px solid #d35400;
+}
+
+.page,
+.back {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    background-color: white;
+    padding: 20px 30px;
+}
+
+.left .page {
+    transform: rotateY(180deg);
+}
+
+.left {
+    transform-style: preserve-3d;
+    transform-origin: right;
+    transform: rotateY(180deg);
+    z-index: 5;
+}
+
+.right .page {
+    transform: rotateY(180deg);
+}
+
+.right {
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transform: rotateY(-180deg);
+}
+
+.left.open {
+    transform-style: preserve-3d;
+    transform-origin: right;
+    transform: rotateY(0deg);
+    z-index: 5;
+}
+
+.right.open {
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transform: rotateY(0deg);
+}
+
+.more {
+    user-select: none;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #2ecc71;
+    position: absolute;
+    bottom: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.more:hover {
+    background-color: #f1c40f;
+}
+
+.close {
+    user-select: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    border-radius: 4px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    background-color: #1abc9c;
+    cursor: pointer;
+}
+
+.close:hover {
+    background-color: #f1c40f;
+}
+
+.page p {
+    position: relative;
+}
+
+.page p::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom, transparent 15%, white 50%);
+}

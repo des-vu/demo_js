@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #song {
+            width: 500px;
+            margin: 50px auto;
+            background: rgb(135, 206, 235);
+        }
+        
+        #song>div {
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        
+        #song>div:hover {
+            background: rgba(255, 255, 255, .5);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="song"></div>
+    <script src="./jquery-3.5.1.js"></script>
+    <script>
+        var id = location.search.split('=')[1];
+        $.ajax({
+            url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
+            type: 'get',
+            dataType: 'jsonp',
+            data: {
+                from: 'qianqian',
+                version: '2.1.0',
+                method: 'baidu.ting.artist.getSongList',
+                format: 'json',
+                tinguid: id,
+                offset: 0,
+                limit: 100
+            },
+            success: function(res) {
+                var str = '';
+                $.each(res.songlist, function(index, val) {
+                    str += `
+                        <div onclick="jump(${val.song_id})">
+                            <div style="padding-bottom:5px;position:relative">
+                                <div style="color:red; padding-bottom:5px">${val.title}</div>
+                                <div>${val.album_title}</div>
+                            </div>
+                            <div>${val.si_proxycompany}</div >
+                        </div >
+                    `;
+                })
+                $('#song').html(str);
+            }
+        })
+
+        function jump(id) {
+            location.href = './song.html?songIds=' + id;
+        }
+    </script>
+</body>
+
+</html>

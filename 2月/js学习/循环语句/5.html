@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 输入一个三位数的正整数，输出时反向输出
+        var n = parseInt(window.prompt('请输入一个三位数的正整数')),
+            a = n % 10,
+            b = n % 100 - a,
+            c = (n - a - b) / 100;
+        var sum = a * 100 + b + c;
+        document.write(sum);
+    </script>
+</body>
+
+</html>

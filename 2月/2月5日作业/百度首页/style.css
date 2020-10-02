@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    line-height: 2em;
+}
+
+img {
+    margin-top: 80px;
+}
+
+a {
+    padding: 0 8px;
+    font-size: 14px;
+}
+
+.wangye {
+    text-decoration: none;
+    color: black;
+}
+
+form {
+    margin: 20px 0;
+    margin-right: -100px;
+}
+
+form input:first-child {
+    width: 450px;
+    height: 35px;
+}
+
+form input:last-child {
+    width: 100px;
+    height: 30px;
+    background-color: #DCD0C8;
+    box-shadow: 2 2 1 1 black;
+}
+
+.nav3 {
+    margin-top: 150px;
+}
+
+footer {
+    color: #928d8d;
+    font-size: 12px;
+}

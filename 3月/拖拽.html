@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .a1 {
+            width: 100px;
+            height: 100px;
+            background-color: blanchedalmond;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a1"></div>
+    <script>
+        var div = document.getElementsByClassName('a1')[0];
+        // var disX,
+        //     disY;
+        // div.onmousedown = function(e) {
+        //     disX = e.pageX - div.offsetLeft;
+        //     disY = e.pageY - div.offsetTop;
+        //     console.log(div.offsetLeft, div.offsetTop);
+        //     document.onmousemove = function(e) {
+        //         div.style.left = e.clientX - disX + 'px';
+        //         div.style.top = e.clientY - disY + 'px';
+        //     }
+        //     document.onmouseup = function() {
+        //         document.onmousemove = null;
+        //     }
+        // }
+
+
+        // function darg(elem) {
+        //     var disX,
+        //         disY;
+        //     elem.addEventListener('mousedown', function(e) {
+        //         disX = e.pageX - elem.offsetLeft;
+        //         disY = e.pageY - elem.offsetTop;
+        //         document.addEventListener('mousemove', test);
+        //         document.addEventListener('mouseup', function() {
+        //             document.removeEventListener('mousemove', test);
+        //         })
+        //     })
+        //     function test() {
+        //         elem.style.left = event.clientX - disX + 'px';
+        //         elem.style.top = event.clientY - disY + 'px';
+        //     }
+        // }
+        // darg(div);
+
+
+        var drag = {
+            disX: null,
+            disY: null,
+            handle: function(elem) {
+                var self = this;
+                elem.addEventListener('mousedown', function() {
+                    self.disX = event.pageX - elem.offsetLeft;
+                    self.disY = event.pageY - elem.offsetTop;
+                    document.addEventListener('mousemove', test);
+                    document.addEventListener('mouseup', function() {
+                        document.removeEventListener('mousemove', test);
+                    })
+
+                    function test() {
+                        elem.style.left = event.clientX - self.disX + 'px';
+                        elem.style.top = event.clientY - self.disY + 'px';
+                    }
+                })
+            }
+        }
+        drag.handle(div);
+    </script>
+</body>
+
+</html>

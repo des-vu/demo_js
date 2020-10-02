@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #888;
+}
+
+.main {
+    background-color: #F6F6F6;
+    height: 415px;
+}
+
+.center {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    height: 112px;
+}
+
+.logo,
+.search {
+    float: left;
+}
+
+.logo img {
+    vertical-align: bottom;
+}
+
+.logo span {
+    font-size: 18px;
+    margin-left: 48px;
+    margin-right: 8px;
+}
+
+.logo select {
+    width: 75px;
+    height: 25px;
+}
+
+.search {
+    margin-top: 24px;
+    margin-left: 50px;
+    width: 600px;
+    height: 58px;
+    font-size: 0;
+}
+
+.search input {
+    width: 518px;
+    height: 30px;
+    border: #EC7137 1px solid;
+    text-indent: 1em;
+}
+
+.search button {
+    float: right;
+    width: 80px;
+    height: 32px;
+    background-color: #EC7137;
+    border: 1px solid #EC7137;
+    color: white;
+    font-size: 16px;
+}
+
+.search a {
+    display: inline-block;
+    margin: 8px;
+}
+
+.shop {
+    float: right;
+    width: 140px;
+    height: 35px;
+    background-color: #F4F4F4;
+    border: 1px solid #ccc;
+    margin-top: 24px;
+    text-align: center;
+    line-height: 35px;
+    position: relative;
+}
+
+.shop::after {
+    content: '0';
+    position: absolute;
+    top: -10px;
+    right: 19px;
+    width: 15px;
+    height: 15px;
+    background-color: #C82E29;
+    color: white;
+    line-height: 15px;
+    text-align: center;
+    border-radius: 8px 8px 8px 0;
+}
+
+.shop img {
+    vertical-align: middle;
+}
+
+.nav ul {
+    height: 32px;
+}
+
+.nav li {
+    float: left;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+}
+
+.nav li:first-of-type {
+    background-color: #EC7137;
+    color: white;
+    width: 199px;
+    font-size: 14px;
+}
+
+.nav li:last-of-type a {
+    color: #EC7137;
+    margin-left: 30px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.main .aside,
+.main img {
+    float: left;
+}
+
+.aside {
+    background-color: white;
+    width: 199px;
+    height: 400px;
+}
+
+.aside ul {
+    padding: 0 16px;
+}
+
+.aside li {
+    height: 66px;
+}
+
+.aside li h3 {
+    font-size: 14px;
+    padding: 12px 0 8px;
+}
+
+.aside li:not(.last) {
+    border-bottom: 1px solid #ccc;
+}

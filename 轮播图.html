@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .box,
+        .move li,
+        img {
+            width: 700px;
+            height: 400px;
+        }
+        
+        .box {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .move {
+            display: flex;
+            position: absolute;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        img {
+            vertical-align: middle;
+        }
+        
+        .box:hover .left-button,
+        .box:hover .right-button {
+            display: block;
+        }
+        
+        .left-button,
+        .right-button {
+            user-select: none;
+            position: absolute;
+            top: 170px;
+            width: 20px;
+            height: 50px;
+            color: white;
+            line-height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .left-button {
+            display: none;
+            left: 0;
+            background-color: rgba(0, 0, 0, .4);
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+        }
+        
+        .right-button {
+            display: none;
+            right: 0;
+            text-align: right;
+            background-color: rgba(0, 0, 0, .4);
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+        }
+        
+        .left-button:hover {
+            background-color: rgba(0, 0, 0, .6);
+        }
+        
+        .right-button:hover {
+            background-color: rgba(0, 0, 0, .6);
+        }
+        
+        .circle {
+            display: flex;
+            justify-content: space-evenly;
+            position: absolute;
+            bottom: 20px;
+            left: 310px;
+            width: 80px;
+        }
+        
+        .circle li {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, .6);
+            cursor: pointer;
+        }
+        
+        .circle .circle-move {
+            position: absolute;
+            left: 4px;
+            background-color: rgba(255, 0, 0, .6);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="move">
+            <li><img src="2月/images/1.jpg" alt=""></li>
+            <li><img src="2月/images/2.jpg" alt=""></li>
+            <li><img src="2月/images/6.jpg" alt=""></li>
+            <li><img src="2月/images/5.jpg" alt=""></li>
+        </ul>
+        <ul class="circle">
+            <li class="circle-move"></li>
+            <li class="circle-click"></li>
+            <li class="circle-click"></li>
+            <li class="circle-click"></li>
+            <li class="circle-click"></li>
+        </ul>
+        <div class="left-button">&lt;</div>
+        <div class="right-button">&gt;</div>
+    </div>
+    <script>
+        // move img
+        var imgMove = document.getElementsByClassName('move')[0];
+
+        // move circle
+        var circleMove = document.getElementsByClassName('circle-move')[0];
+
+        var key = true;
+        setInterval(function() {
+            if (key) {
+                var left = imgMove.offsetLeft;
+                left -= 700;
+                imgMove.style.left = left + 'px';
+                if (left < -2100) {
+                    imgMove.style.left = 0 + 'px';
+                }
+            }
+        }, 2000);
+
+        setInterval(function() {
+            if (key) {
+                var left = circleMove.offsetLeft;
+                left += 19;
+                circleMove.style.left = left + 'px';
+                if (left > 61) {
+                    circleMove.style.left = 4 + 'px';
+                }
+            }
+        }, 2000);
+        // 鼠标移入停止图片切换
+        var box = document.getElementsByClassName('box')[0];
+        box.addEventListener('mouseover', function() {
+            key = false;
+            box.addEventListener('mouseout', function() {
+                key = true;
+            });
+        });
+
+        // left button
+        var leftBtn = document.getElementsByClassName('left-button')[0];
+        leftBtn.addEventListener('click', function() {
+            //img
+            var leftImg = imgMove.offsetLeft;
+            if (leftImg >= 0) {
+                imgMove.style.left = '-2100px';
+                circleMove.style.left = '61px';
+                return;
+            }
+            imgMove.style.left = leftImg + 700 + 'px';
+            // circle
+            var leftCircle = circleMove.offsetLeft;
+            circleMove.style.left = leftCircle - 19 + 'px';
+        });
+
+        // right button
+        var rightBtn = document.getElementsByClassName('right-button')[0];
+        rightBtn.addEventListener('click', function() {
+            // img
+            var leftImg = imgMove.offsetLeft;
+            if (leftImg <= -2100) {
+                imgMove.style.left = '0px';
+                circleMove.style.left = '4px';
+                return;
+            }
+            imgMove.style.left = leftImg - 700 + 'px';
+            // circle
+            var leftCircle = circleMove.offsetLeft;
+            circleMove.style.left = leftCircle + 19 + 'px';
+        });
+
+        // circle click
+        var circles = document.getElementsByClassName('circle-click');
+        for (var i = 0; i < circles.length; i++) {
+            (function(i) {
+                circles[i].onclick = function() {
+                    // circle
+                    var leftCir = circles[i].offsetLeft;
+                    circleMove.style.left = leftCir + 'px';
+                    // img
+                    imgMove.style.left = -700 * i + 'px';
+                }
+            }(i))
+        }
+
+        /* var timer,
+            timer1;
+
+        function move1() {
+            timer = setInterval(function() {
+                imgLeft -= 700;
+                imgMove.style.left = imgLeft + 'px';
+                if (imgLeft == -2100) {
+                    imgLeft = 700;
+                }
+            }, 1000);
+        }
+
+        function move2() {
+            timer1 = setInterval(function() {
+                circleLeft += 19;
+                circleMove.style.left = circleLeft + 'px';
+                if (circleLeft == 61) {
+                    circleLeft = -15;
+                }
+            }, 1000);
+        } */
+    </script>
+</body>
+
+</html>

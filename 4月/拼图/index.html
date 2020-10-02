@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            text-align: center;
+        }
+        
+        button {
+            margin-top: 40px;
+            width: 80px;
+            height: 35px;
+            border-radius: 5px;
+            background-color: skyblue;
+            border: none;
+            font-size: 18px;
+            box-shadow: 0 0 7px 1px #ccc;
+            color: white;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        .imgArea {
+            position: relative;
+            margin: 30px auto;
+            width: 640px;
+            height: 360px;
+            /* outline: 1px solid; */
+        }
+        
+        .imgArea div {
+            position: absolute;
+            width: 80px;
+            height: 90px;
+            background-image: url(12.jpg);
+            box-shadow: 0 0 10px white;
+            /* transition: .3s; */
+        }
+    </style>
+</head>
+
+<body>
+    <button>开始</button>
+    <div class="imgArea"></div>
+    <script src="index.js"></script>
+</body>
+
+</html>

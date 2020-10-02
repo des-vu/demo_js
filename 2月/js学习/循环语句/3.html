@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 打印出100以内的质数
+        var count = 0;
+        for (var a = 2; a < 100; a++) {
+            for (var i = 2; i < a; i++) {
+                if (a % i == 0) {
+                    count++;
+                }
+            }
+            if (count == 0) {
+                document.write(a + ' ');
+            }
+            count = 0;
+        }
+        document.write('<br>');
+        // 开方数
+        // Math.sqrt();
+        var count = 0;
+        for (var c = 2; c < 100; c++) {
+            for (var b = 1; b <= Math.sqrt(c); b++) {
+                if (c % b == 0) {
+                    count++;
+                }
+            }
+            if (count == 1) {
+                document.write(c + ' ');
+            }
+            count = 0;
+        }
+    </script>
+</body>
+
+</html>

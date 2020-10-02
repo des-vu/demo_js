@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <span></span>
+    <script>
+        // for每一次循环，里面的for循环语句都有一个重复声明 ii=0
+        for (var i = 0; i++ < 9;) {
+            for (var ii = 0; ii++ < i;) {
+                document.write("*");
+            }
+            document.write('<br>');
+        }
+        var i = 0;
+        do {
+            var ii = 0;
+            do {
+                document.write('*');
+            } while (ii++ < i);
+            document.write('<br>');
+        } while (i++ < 8);
+        // 杨辉三角
+        for (var i = 0; i < 12; i++) {
+            for (var n = 12 - i; n; n--) {
+                document.write('<span>*</span>');
+            }
+            for (var j = 2 * i - 1; j > 0; j--) {
+                document.write('*');
+            }
+            document.write('<br>');
+        }
+    </script>
+</body>
+
+</html>

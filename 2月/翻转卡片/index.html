@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: skyblue;
+            transition: 20s;
+            transform-style: preserve-3d;
+            transform: perspective(900px);
+        }
+        
+        main {
+            position: relative;
+            width: 500px;
+            height: 200px;
+        }
+        
+        body:hover {
+            transform: perspective(900px) rotateY(2400deg);
+        }
+        
+        div {
+            width: 500px;
+            height: 200px;
+            position: absolute;
+        }
+        
+        div:nth-child(1) {
+            background-image: url(../images/2.jpg);
+            background-size: 100% 100%;
+            backface-visibility: hidden;
+        }
+        
+        div:nth-child(2) {
+            background-image: url(../images/5.jpg);
+            background-size: 100% 100%;
+            backface-visibility: hidden;
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div></div>
+        <div></div>
+    </main>
+</body>
+
+</html>

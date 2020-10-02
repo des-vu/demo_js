@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+        
+        body>div {
+            position: relative;
+            left: 100px;
+            top: 100px;
+        }
+        
+        .first {
+            width: 100%;
+            height: 50px;
+            background-color: aqua;
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+        
+        .box {
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="first"></div>
+        <div class="box">
+            low 蛮不错的嘛
+        </div>
+    </div>
+    <script src="./jquery.js"></script>
+    <script>
+        $(function() {
+            $('.box').css('color', 'red').css('font-size', '40px');
+            $('.box').css({
+                color: 'green',
+                backgroundColor: 'red'
+            });
+            //不算定位，相对于视窗的距离
+            console.log($('.box').offset());
+            console.log($('.box').offset().top);
+            var oTop = $('.box').offset().top;
+            console.log($('.box').offset().left);
+            //相对于父元素有定位的距离
+            console.log($('.box').position());
+            //滚动条距离
+            $(window).scroll(function() {
+                var scrTop = $(this).scrollTop();
+                console.log(scrTop);
+                if (scrTop > oTop) {
+                    // $('.first').css('display', 'block');
+                    // $('.first').show();
+                    // $('.first').fadeIn();
+                    $('.first').stop().slideDown(2000);
+                } else {
+                    // $('.first').css('display', 'none');
+                    // $('.first').hide();
+                    // $('.first').fadeOut();
+                    $('.first').stop().slideUp(400);
+                }
+            });
+            //盒子宽高
+            console.log($('.box').width());
+            console.log($('.box').height());
+            innerWidth //width+padding
+            innerHeight
+            outerWidth //width+padding+border
+            outerHeight
+        })
+    </script>
+</body>
+
+</html>

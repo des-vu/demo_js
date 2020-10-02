@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: grid;
+            grid-template: 1fr/1fr;
+            justify-items: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        div {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            transform: rotate(45deg);
+            animation: scale 2s infinite alternate ease-in;
+        }
+        
+        div::before {
+            content: '';
+            position: absolute;
+            left: -100px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: red;
+        }
+        
+        div::after {
+            content: '';
+            position: absolute;
+            top: -100px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: red;
+        }
+        
+        @keyframes scale {
+            0% {
+                transform: rotate(45deg) scale(0);
+            }
+            100% {
+                transform: rotate(45deg) scale(1.5);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

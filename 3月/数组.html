@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [1, 2, 3, 4, 5]; //字面量
+        var arr = new Array(1, 2, 3, 4, 5);
+        // .push添加数据
+        var arr1 = [];
+        arr1.push(); //可添加多个
+        //模拟系统.push
+        Array.prototype.push = function() {
+            for (var i = 0; i < arguments.length; i++) {
+                this[this.length] = arguments[i];
+            }
+            return this.length;
+        }
+    </script>
+</body>
+
+</html>

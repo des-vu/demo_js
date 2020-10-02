@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: aqua;
+        }
+        
+        body::after {
+            content: 'knowyourself';
+            position: absolute;
+            z-index: -1;
+            left: 50%;
+            top: 50%;
+            font-size: 2em;
+            color: white;
+            transform: translate(-50%, -50%);
+        }
+        
+        ul {
+            display: grid;
+            grid-template: 1fr/repeat(5, 1fr);
+            gap: 10px;
+            width: 100vw;
+            height: 100vh;
+            list-style: none;
+        }
+        
+        li {
+            background-color: violet;
+            animation: sudu 4s infinite;
+        }
+        
+        li:nth-child(1) {
+            animation-timing-function: linear;
+        }
+        
+        li:nth-child(2) {
+            animation-timing-function: ease;
+        }
+        
+        li:nth-child(3) {
+            animation-timing-function: ease-in;
+        }
+        
+        li:nth-child(4) {
+            animation-timing-function: ease-out;
+        }
+        
+        li:nth-child(5) {
+            animation-timing-function: ease-in-out;
+        }
+        
+        @keyframes sudu {
+            /* from {
+                height: 100vh;
+            } */
+            to {
+                /* height: 10vh; */
+                transform: translateY(90vh);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>linear</li>
+        <li>ease</li>
+        <li>ease-in</li>
+        <li>ease-out</li>
+        <li>ease-in-out</li>
+    </ul>
+</body>
+
+</html>

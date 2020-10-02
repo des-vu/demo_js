@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="tab">
+            <span style="color: #10AEB5;">国内疫情</span>
+            <span>国外疫情</span>
+            <span>实时播报</span>
+        </div>
+        <div class="data">
+            <div class="update_time">
+                <span>国内疫情</span>
+                <span></span>
+            </div>
+            <div class="update_data">
+                <div class="item">
+                    现有确诊
+                    <div style="color: #FF6A57;"></div>
+                    <div>昨日<span style="color: #FF6A57;"></span></div>
+                </div>
+                <div class="item">
+                    无症状
+                    <div style="color: #E86D48;"></div>
+                    <div>昨日<span style="color: #E86D48;"></span></div>
+                </div>
+                <div class="item">
+                    现有疑似
+                    <div style="color: #EC9217;"></div>
+                    <div>昨日<span style="color: #EC9217;"></span></div>
+                </div>
+                <div class="item">
+                    现有重症
+                    <div style="color: #545499;"></div>
+                    <div>昨日<span style="color: #545499;"></span></div>
+                </div>
+                <div class="item">
+                    累计确诊
+                    <div style="color: #E83132;"></div>
+                    <div>昨日<span style="color: #E83132;"></span></div>
+                </div>
+                <div class="item">
+                    境外输入
+                    <div style="color: #476DA0;"></div>
+                    <div>昨日<span style="color: #476DA0;"></span></div>
+                </div>
+                <div class="item">
+                    累计治愈
+                    <div style="color: #10AEB5;"></div>
+                    <div>昨日<span style="color: #10AEB5;"></span></div>
+                </div>
+                <div class="item">
+                    累计死亡
+                    <div style="color: #4D5054;"></div>
+                    <div>昨日<span style="color: #4D5054;"></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="chart"></div>
+        <div>国内各地区疫情统计汇总</div>
+        <table>
+            <thead>
+                <tr>
+                    <td>疫情地区</td>
+                    <td>新增</td>
+                    <td>现有</td>
+                    <td>累计</td>
+                    <td>治愈</td>
+                    <td>死亡</td>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <h4>实时播报</h4>
+        <span class="zi-xun1">国内资讯</span>
+        <span class="zi-xun2">国外资讯</span>
+        <div class="information">
+            <ul>
+
+            </ul>
+        </div>
+    </div>
+    <script src="./jquery-3.5.1.js"></script>
+    <script src="./echarts.min.js"></script>
+    <script>
+        $.ajax({
+            url: 'https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5',
+            type: 'post',
+            dataType: 'jsonp',
+            success(res) {
+                let data = JSON.parse(res.data);
+                $('.update_time span').eq(1).html('数据更新至 ' + data.lastUpdateTime);
+                let {
+                    chinaTotal: t,
+                    chinaAdd: a
+                } = data;
+                $('.item div:eq(0)').html(t.nowConfirm);
+                $('.item div:eq(1) span').html((a.nowConfirm < 0 ? '' : '+') + a.nowConfirm);
+                $('.item div:eq(2)').html(t.noInfect);
+                $('.item div:eq(3) span').html((a.noInfect < 0 ? '' : '+') + a.noInfect);
+                $('.item div:eq(4)').html(t.suspect);
+                $('.item div:eq(5) span').html((a.suspect < 0 ? '' : '+') + a.suspect);
+                $('.item div:eq(6)').html(t.nowSevere);
+                $('.item div:eq(7) span').html((a.nowSevere < 0 ? '' : '+') + a.nowSevere);
+                $('.item div:eq(8)').html(t.confirm);
+                $('.item div:eq(9) span').html((a.confirm < 0 ? '' : '+') + a.confirm);
+                $('.item div:eq(10)').html(t.importedCase);
+                $('.item div:eq(11) span').html((a.importedCase < 0 ? '' : '+') + a.importedCase);
+                $('.item div:eq(12)').html(t.heal);
+                $('.item div:eq(13) span').html((a.heal < 0 ? '' : '+') + a.heal);
+                $('.item div:eq(14)').html(t.dead);
+                $('.item div:eq(15) span').html((a.dead < 0 ? '' : '+') + a.dead);
+
+                let area = data.areaTree[0].children;
+                let option = {
+                    title: {
+                        text: '新增确诊分布',
+                        subtext: '单位：例'
+                    },
+                    label: {
+                        show: true,
+                        position: 'top'
+                    },
+                    xAxis: {
+                        axisLabel: {
+                            intrval: 0,
+                            rotate: 45,
+                            margin: 15,
+                            textStyle: {
+                                fontWeight: 'bloder',
+                                color: '#000'
+                            }
+                        },
+                        data: []
+                    },
+                    yAxis: {},
+                    series: [{
+                        type: 'bar',
+                        data: []
+                    }],
+                };
+                area.forEach(val => {
+                    if (val.today.confirm) {
+                        option.xAxis.data.push(val.name);
+                        option.series[0].data.push(val.today.confirm);
+                    }
+                })
+                let myChart = echarts.init($('.chart')[0]);
+                myChart.setOption(option);
+
+                let str = '';
+                $.each(area, (index, val) => {
+                    str += `
+                        <tr>
+                            <td index="${index}">
+                                ${val.name} <span>${area[index].children.length==1?'':'<i class="fa fa-caret-down" aria-hidden="true"></i></span>'} 
+                            </td>
+                            <td>${val.today.confirm}</td>
+                            <td>${val.total.nowConfirm}</td>
+                            <td>${val.total.confirm}</td>
+                            <td>${val.total.heal}</td>
+                            <td>${val.total.dead}</td>
+                        </tr>
+                    `;
+                })
+                $('table tbody').html(str);
+                $('table tbody tr td:nth-child(1)').click(function() {
+                    let i = $(this).attr('index');
+                    if (area[i].children.length == 1) {
+                        return;
+                    }
+                    if ($(this).hasClass('isTrue')) {
+                        $('tbody tr[isIndex=' + i + ']').remove();
+                        $(this).children('span').html('<i class="fa fa-caret-down" aria-hidden="true"></i>')
+                        $(this).removeClass('isTrue');
+                        return;
+                    }
+                    $(this).children('span').html('<i class="fa fa-caret-up" aria-hidden="true"></i>')
+                    $(this).addClass('isTrue');
+                    let tr = $(this).parent();
+                    let str = '';
+                    $.each(area[i].children, (index, val) => {
+                        str += `
+                            <tr isIndex="${i}" style="background:#fff;">
+                                <td index="${index}" style="color:#00BEC9;background:#fff">
+                                    ${val.name}
+                                </td>
+                                <td>${val.today.confirm}</td>
+                                <td>${val.total.nowConfirm}</td>
+                                <td>${val.total.confirm}</td>
+                                <td>${val.total.heal}</td>
+                                <td>${val.total.dead}</td>
+                            </tr>
+                        `;
+                    })
+                    $(str).insertAfter(tr);
+                })
+            }
+        })
+        $.ajax({
+            url: 'https://route.showapi.com/2217-4',
+            type: 'post',
+            data: {
+                showapi_appid: '313078',
+                showapi_sign: '2e012c0dcbd343d28070fe8319e3637f'
+            },
+            success(res) {
+                let str = '';
+                $.each(res.showapi_res_body.newsList, (index, val) => {
+                    str += `
+                        <li>
+                            <div>${val.updateTime}</div>
+                            <div>${val.title}</div>
+                        </li>
+                    `;
+                })
+                $('.information ul').html(str);
+            }
+        })
+    </script>
+</body>
+
+</html>

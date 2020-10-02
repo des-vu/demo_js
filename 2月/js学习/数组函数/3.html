@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 定义一组函数，输入数字，逆转并输出汉字形式
+        function reverse() {
+            var num = window.prompt('input');
+            var str = '';
+            for (var i = num.length - 1; i >= 0; i--) {
+                str += transfer(num[i]);
+                // str += num.charAt(i);
+            }
+            console.log(str);
+        }
+        // 两个函数可以连接
+        function transfer(target) {
+            switch (target) {
+                case '1':
+                    return '壹';
+                case '2':
+                    return '贰';
+                case '3':
+                    return '叁';
+                case '4':
+                    return '肆';
+                case '5':
+                    return '伍';
+                case '6':
+                    return '陆';
+                case '7':
+                    return '柒';
+                case '8':
+                    return '捌';
+                case '9':
+                    return '玖';
+                case '0':
+                    return '零';
+            }
+        }
+    </script>
+</body>
+
+</html>

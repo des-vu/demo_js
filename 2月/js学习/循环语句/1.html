@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 输入a，b，c三个数字，打印出最大的。
+        var a, b, c;
+        a = parseInt(window.prompt('请输入a的值'));
+        b = parseInt(window.prompt('请输入b的值'));
+        c = parseInt(window.prompt('请输入c的值'));
+        if (a > b && a > c) {
+            document.write(a);
+        } else if (b > a && b > c) {
+            document.write(b);
+        } else {
+            document.write(c);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        div {
+            width: 250px;
+            height: 100px;
+            background-color: tomato;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(40deg) rotateZ(-15deg);
+        }
+        
+        div::before,
+        div::after {
+            width: 50%;
+            height: 100%;
+            background-color: red;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            transition: 2s;
+        }
+        
+        div::before {
+            content: '新年';
+            left: 0;
+            justify-content: flex-end;
+            border-right: 1px tomato solid;
+            transform-origin: left;
+            box-sizing: border-box;
+            padding-right: 10px;
+        }
+        
+        div::after {
+            content: '快乐';
+            right: 0;
+            justify-content: flex-start;
+            border-left: 1px tomato solid;
+            transform-origin: right;
+            box-sizing: border-box;
+            padding-left: 10px;
+        }
+        
+        div:hover::before {
+            transform: rotateY(-145deg);
+        }
+        
+        div:hover::after {
+            transform: rotateY(145deg);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div>knowyourself</div>
+    </main>
+</body>
+
+</html>

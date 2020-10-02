@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 写一个函数，实现n的阶乘
+        function factorial() {
+            var result = 1;
+            for (var i = 1; i <= arguments[0]; i++) {
+                result *= i;
+            }
+            console.log(result);
+        }
+        // function factorial(a) {
+        //     var result = 1;
+        //     for (var i = 1; i <= a; i++) {
+        //         result *= i;
+        //     }
+        //     console.log(result);
+        // }
+        // 递归  代码更简洁，大的程序不能用递归，慢
+        function jc(n) {
+            if (n == 1 || n == 0) {
+                return 1;
+            }
+            return n * jc(n - 1);
+        }
+        // 找规律
+        // 找出口  停止的那点
+    </script>
+</body>
+
+</html>

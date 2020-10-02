@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            position: relative;
+        }
+        
+        .out {
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+            position: absolute;
+            top: 150px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" style="width: 100px;height: 100px;background-color:red;">
+        老low kb
+    </div>
+    <div class="wrap">
+        <div class="out"></div>
+    </div>
+    <input type="text">
+    <select id="pron">
+        <option value="">选择省份</option>
+        <option value="0">北京</option>
+        <option value="1">河南</option>
+        <option value="2">山东</option>
+        <option value="3">山西</option>
+    </select>
+    <input type="text" id="a">
+    <select id="city"></select>
+    <script src="./jquery.js"></script>
+    <script>
+        $(function() {
+            /* $('.box').click(function() {
+                $(this).hide(1000, function() {
+                    alert($(this).text());
+                });
+            }); */
+            $('.box').dblclick(function() {
+                console.log('双击了');
+            });
+            $('.box').mousedown(function() {
+                console.log('鼠标按下');
+            });
+            $('.box').mouseup(function() {
+                console.log('鼠标抬起');
+            });
+            $('.wrap').mouseenter(function() {
+                $('.out').stop().slideDown();
+            });
+            $('.wrap').mouseleave(function() {
+                $('.out').stop().slideUp();
+            });
+            $('input').focus();
+            // $('input').focus(function() {
+            //     console.log(1);
+            //     $(this).blur();
+            // });
+            $(window).keydown(function(e) {
+                console.log(String.fromCharCode(e.keyCode));
+            });
+            // $('#a').focus(function() {
+            //     $('#a').unbind();
+            // })
+            $('#a').change(function() {
+                console.log(5);
+            })
+        })
+    </script>
+    <script>
+        var cityData = [
+            ['昌平', '海淀', '朝阳', '西城'],
+            ['郑州', '南阳', '安阳', '洛阳'],
+            ['济南', '青岛', '菏泽'],
+            ['太原', '大同'],
+        ];
+
+        var pron = document.getElementById('pron');
+        var city = document.getElementById('city');
+
+        pron.onchange = function() {
+            var index = pron.value;
+            var date = cityData[index];
+            var str = '';
+            for (var i = 0; i < date.length; i++) {
+                str += '<option>' + date[i] + '</option>';
+            }
+            city.innerHTML = str;
+        };
+    </script>
+</body>
+
+</html>

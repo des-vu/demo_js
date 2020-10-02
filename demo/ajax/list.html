@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #hot {
+            overflow: hidden;
+            width: 1200px;
+            margin: 20px auto 30px;
+        }
+        
+        #hot div:hover {
+            border-color: #ff3574;
+        }
+        
+        #hot>div {
+            width: 300px;
+            height: 380px;
+            border: 1px solid #eee;
+            cursor: pointer;
+            box-sizing: border-box;
+            float: left;
+            padding: 15px 20px;
+            font-size: 13px;
+        }
+        
+        #hot>div img {
+            width: 260px;
+            height: 260px;
+            display: block;
+        }
+        
+        #hot>div p {
+            margin: 10px 0;
+            line-height: 20px;
+            color: #696969;
+            font-size: 13px;
+            height: 40px;
+            overflow: hidden;
+        }
+        
+        #hot>div p span {
+            color: #ff3574;
+        }
+        
+        #hot>div>div:nth-child(2) span:not(:nth-child(3)) {
+            float: left;
+            line-height: 30px;
+        }
+        
+        #hot>div>div:nth-child(2) span:nth-child(1) {
+            color: #ff3574;
+            font-size: 18px;
+        }
+        
+        #hot>div>div:nth-child(2) span:nth-child(2) {
+            padding-left: 15px;
+        }
+        
+        #hot>div>div:nth-child(2) span:nth-child(3) {
+            border: 1px solid rgb(255, 53, 116);
+            padding: 3px 8px;
+            border-radius: 3px;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="hot"></div>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('post', 'https://api.ymduo.com/Interface/recommendlists', true);
+        xhr.send();
+        xhr.onreadystatechange = function() {
+            if (xhr.status == 200 && xhr.readyState == 4) {
+                var data = JSON.parse(xhr.responseText).result.data;
+                var hot = document.getElementById('hot');
+                var str = '';
+                for (var i = 0; i < data.length; i++) {
+                    str += `
+                        <div onclick="jump(${data[i].goods_id})">
+                            <div>
+                                <img src="${data[i].image}">
+                                <p>
+                                    <span>${data[i].freight_type == '1' ? '【包邮】' : ''}</span>
+                                    ${data[i].goods_name}
+                                </p>
+                            </div>
+                            <div>
+                                <span>￥${data[i].price}</span>
+                                <span>销量：${data[i].pay_num}</span>
+                                <span>找相似</span>
+                            </div>
+                        </div>
+                    `;
+                }
+                hot.innerHTML = str;
+            }
+        }
+
+        function jump(gid) {
+            location.href = './detail.html?gid=' + gid;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        var li = document.getElementsByTagName('li'),
+            len = li.length;
+        for (i = 0; i < len; i++) {
+            li[i].style.cursor = 'pointer';
+        }
+        for (var i = 0; i < len; i++) {
+            (function(j) {
+                li[i].addEventListener('click', function() {
+                    console.log(j + 1);
+                }, false)
+            }(i))
+        }
+    </script>
+</body>
+
+</html>

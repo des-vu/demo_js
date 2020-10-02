@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        main {
+            position: relative;
+            width: 500px;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        main:hover article {
+            animation-play-state: paused;
+        }
+        
+        main:hover ul::before {
+            animation-play-state: paused;
+        }
+        
+        article {
+            display: flex;
+            width: 2000px;
+            height: 300px;
+            animation: translate infinite 6s steps(4, end);
+        }
+        
+        div {
+            width: 500px;
+            height: 300px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        @keyframes translate {
+            100% {
+                transform: translateX(-2000px);
+            }
+        }
+        
+        ul {
+            position: absolute;
+            left: 50%;
+            bottom: 15%;
+            z-index: 1;
+            display: flex;
+            list-style: none;
+            transform: translateX(-50%);
+        }
+        
+        li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, .5);
+            border-radius: 50%;
+            font-size: 1.5em;
+            color: white;
+        }
+        
+        ul::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: red;
+            animation: yidong 6s infinite steps(4, end);
+        }
+        
+        @keyframes yidong {
+            100% {
+                transform: translateX(200px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <article>
+            <div><img src="../images/1.jpg" alt=""></div>
+            <div><img src="../images/2.jpg" alt=""></div>
+            <div><img src="../images/3.jpg" alt=""></div>
+            <div><img src="../images/4.jpg" alt=""></div>
+        </article>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-color: #000;
+            transform-style: preserve-3d;
+            transform: perspective(600px) rotateX(-10deg);
+        }
+        
+        .wrapper {
+            position: relative;
+            margin: 200px auto;
+            width: 120px;
+            height: 70px;
+            transform-style: preserve-3d;
+            user-select: none;
+        }
+        
+        .wrapper img {
+            user-select: none;
+            transition: 1s;
+            position: absolute;
+            width: 120px;
+            height: 70px;
+            background-color: black;
+            -webkit-box-reflect: below 10px -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, .7) 100%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <img src="../images/1.jpg" alt="">
+        <img src="../images/2.jpg" alt="">
+        <img src="../images/3.jpg" alt="">
+        <img src="../images/4.jpg" alt="">
+        <img src="../images/5.jpg" alt="">
+        <img src="../images/6.jpg" alt="">
+        <img src="../images/7.jpg" alt="">
+        <img src="../images/8.jpg" alt="">
+        <img src="../images/9.jpg" alt="">
+        <img src="../images/10.jpg" alt="">
+        <img src="../images/11.jpg" alt="">
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

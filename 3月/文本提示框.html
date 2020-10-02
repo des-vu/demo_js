@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <input type="text" value="请输入搜索内容" onfocus="if(this.value=='请输入搜索内容'){this.value='';this.style.color='#424242';}" onblur="if(this.value==''){this.value='请输入搜索内容'; this.style.color='#666'}"> -->
+    <input type="text" value="请输入搜索内容">
+    <script>
+        var input = document.getElementsByTagName('input')[0];
+        input.onfocus = function() {
+            if (this.value == '请输入搜索内容') {
+                this.value = '';
+            }
+        }
+        input.onblur = function() {
+            if (this.value == '') {
+                this.value = '请输入搜索内容';
+            }
+        }
+    </script>
+</body>
+
+</html>

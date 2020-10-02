@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: grid;
+            grid-template: 10vh 1fr 10vh/1fr;
+            justify-items: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        header,
+        footer {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template: 1fr/1fr;
+            justify-items: center;
+            align-items: center;
+            transform: translateX(-100%);
+            font-size: 2em;
+            color: white;
+        }
+        
+        header {
+            background-color: red;
+            animation: translate 1s forwards;
+        }
+        
+        footer {
+            background-color: purple;
+            animation: skew 1s 4s forwards;
+        }
+        
+        main {
+            display: grid;
+            grid-template: 1fr 1fr/1fr;
+            justify-items: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background-image: url(../images/1.jpg);
+            background-position: center;
+            overflow: hidden;
+            transform: translateX(-100%);
+            animation: rotate 1s 1s forwards;
+        }
+        
+        div {
+            box-sizing: border-box;
+            padding: 20px;
+            width: 90vw;
+            transform: translateX(-100vw);
+            opacity: .8;
+            color: white;
+        }
+        
+        .a {
+            align-self: flex-end;
+            margin-bottom: 30px;
+            background-color: violet;
+            animation: rotate 1s 2s forwards;
+        }
+        
+        .b {
+            align-self: flex-start;
+            margin-top: 30px;
+            background-color: aqua;
+            animation: rotate 1s 3s forwards;
+        }
+        
+        @keyframes translate {
+            to {
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes rotate {
+            to {
+                transform: translateX(0) rotate(360deg);
+            }
+        }
+        
+        @keyframes skew {
+            from {
+                transform: translate(-100%) skewX(-45deg);
+            }
+            to {
+                transform: skewX(0deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>knowyourself</header>
+    <main>
+        <div class="a">
+            系统课程是多个实战课程的组合，用来全面掌握一门语言或软件的使用，尤其适合刚入门的新手系统牢固的掌握知识。
+        </div>
+        <div class="b">
+            系统课程是多个实战课程的组合，用来全面掌握一门语言或软件的使用，尤其适合刚入门的新手系统牢固的掌握知识。
+        </div>
+    </main>
+    <footer>knowyourself</footer>
+</body>
+
+</html>

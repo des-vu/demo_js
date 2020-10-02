@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #F0F0F0;
+}
+
+.center {
+    margin: 0 auto;
+    width: 981px;
+}
+
+.header img {
+    margin: 22px 350px 22px 0;
+    vertical-align: middle;
+}
+
+.logo {
+    font-size: 0;
+}
+
+.header input {
+    border: 1px solid #3AAD00;
+    vertical-align: middle;
+    height: 25px;
+}
+
+.header input:first-of-type {
+    text-indent: 5px;
+}
+
+.header input:last-of-type {
+    background-color: #3AAD00;
+    color: white;
+    height: 27px;
+    padding: 5px;
+}
+
+.nav {
+    height: 45px;
+    background-color: #64B444;
+}
+
+.nav li {
+    float: left;
+    line-height: 45px;
+    padding: 0 20px;
+}
+
+.nav li:hover {
+    background-color: #217814;
+}
+
+.nav .active {
+    background-color: #217814;
+}
+
+.nav li a {
+    font-size: 14px;
+    color: white;
+}
+
+.main {
+    box-sizing: border-box;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: white;
+    height: 490px;
+    margin-bottom: 15px;
+}
+
+.main .main-left {
+    float: left;
+}
+
+.main .main-center {
+    float: left;
+    margin-left: 25px;
+    width: 375px;
+}
+
+.main .main-center h2 {
+    color: red;
+    text-align: center;
+    font-size: 20px;
+}
+
+.main .main-center p {
+    padding: 8px;
+    border-bottom: 1px black dashed;
+}
+
+.main .main-center ul {
+    margin-top: 14px;
+}
+
+.main .main-center li {
+    padding: 5px 3px;
+}
+
+.main .main-center span {
+    color: #999999;
+    margin-right: 5px;
+}
+
+.main .main-center a {
+    color: black;
+}
+
+.main .main-right {
+    float: right;
+}
+
+.main .main-right h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.main .main-bottom {
+    margin-top: 30px;
+    width: 100%;
+    float: left;
+}
+
+.main .main-bottom h2 {
+    font-weight: normal;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.main .main-bottom li {
+    float: left;
+    margin-left: 16px;
+}
+
+.main .main-bottom li h4 {
+    text-align: center;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+.address {
+    margin-top: 30px;
+    height: 40px;
+    background-color: #DCDCDC;
+    text-align: center;
+    line-height: 40px;
+}
+
+.address a {
+    margin: 0 15px;
+    color: #000074;
+}
+
+.fixed {
+    position: fixed;
+    top: 176px;
+    left: 100px;
+}

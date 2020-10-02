@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #play div {
+            margin: 10px auto;
+            width: 400px;
+            height: 700px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+            color: white;
+        }
+        
+        #play .name {
+            font-weight: bold;
+            font-size: 30px;
+            position: absolute;
+            top: 420px;
+            text-align: center;
+        }
+        
+        #play .chang {
+            font-size: 20px;
+            position: absolute;
+            top: 470px;
+            text-align: center;
+        }
+        
+        #play audio {
+            position: absolute;
+            top: 560px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="play"></div>
+    <script src="./jquery-3.5.1.js"></script>
+    <script>
+        var id = location.search.split('=')[1];
+        $.ajax({
+            url: 'http://music.baidu.com/data/music/fmlink',
+            type: 'get',
+            dataType: 'jsonp',
+            data: {
+                rate: '320',
+                songIds: id,
+                type: ''
+            },
+            success: function(res) {
+                var info = res.data.songList[0];
+                var str = '';
+                str = `
+                    <div style="background-image:url(${info.songPicRadio})">
+                        <div style="background-color: rgba(0, 0, 0, .3);">
+                            <div class="name">${info.songName}</div>
+                            <div class="chang">演唱者：${info.artistName}</div>
+                            <audio src="${info.songLink}" controls></audio>
+                        </div>
+                    </div>
+                `;
+                $('#play').html(str)
+            }
+        })
+    </script>
+</body>
+
+</html>

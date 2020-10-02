@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 斐波那契额数列第n项
+        var n = parseInt(window.prompt('请输入正整数'));
+        var a = b = 1,
+            c;
+        if (n < 3) {
+            document.write(1);
+        } else {
+            for (var i = 2; i < n; i++) {
+                c = a + b;
+                a = b;
+                b = c;
+            }
+            document.write(c);
+        }
+        // 找规律
+        // 1.这个东西通过什么样的规律算出来的
+        // 2.每次循环往复计算的是啥，循环的是什么，计算的是什么
+    </script>
+</body>
+
+</html>

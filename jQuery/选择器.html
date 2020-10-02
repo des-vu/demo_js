@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <p id="p1">alex</p>
+        <ul>
+            <li class="item1">张三</li>
+            <li class="item2">李四</li>
+            <li class="item3">王五</li>
+        </ul>
+    </div>
+    <ul class="sel">
+        <li class="first">1</li>
+        <li></li>
+        <li></li>
+        <li>
+            <div></div>
+        </li>
+        <li></li>
+        <li class="last">6</li>
+    </ul>
+    <input type="button" value="">
+    <input type="checkbox" name="" id="">
+    <script src="jquery.js"></script>
+    <script>
+        //id class 标签 后代 子代 + ~ 组合
+        console.log($('#p1'));
+        console.log($('.box'));
+        console.log($('.box li'));
+        console.log($('.box p'));
+        console.log($('.box>#id'));
+        console.log($('.box > ul > li'));
+        console.log($('.box ul li.item1'));
+        console.log($('.box ul li.item1+li'));
+        console.log($('.box ul li.item1~li'));
+        console.log($('p,ul,li,div'));
+        //过滤选择器
+        console.log($('.sel'));
+        console.log($('.sel li:first'));
+        console.log($('.sel li:last'));
+        console.log($('.sel li:not(.first)'));
+        console.log($('.sel li:odd'));
+        console.log($('.sel li:even'));
+        console.log($('.sel li:eq(0)')); //第0个是html中第一个元素
+        console.log($('.sel li:eq(5)').text());
+        console.log($('.sel li:gt(3)'));
+        console.log($('.sel li:lt(3)'));
+        console.log($('.sel li:contains(6)'));
+        $('ul li:empty'); //不包含子元素或文本的空元素
+        $('ul li:has(div)'); //包含该元素
+        $('ul li:hidden'); //选取不可见元素
+        $('ul li:visible'); //选取可见元素
+        $('input[type=checked]');
+        //jQuery选择器完善的处理机制
+        //元素是否有长度或转为dom元素来判断
+        if ($('.box').length > 0) {
+            console.log(123);
+        } else {
+            throw new Error('获取元素失败');
+        }
+    </script>
+</body>
+
+</html>

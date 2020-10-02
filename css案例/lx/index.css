@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.header {
+    width: 100px;
+}
+
+.margin-auto {
+    margin: 0 auto;
+    width: 1170px;
+}
+
+.header img,
+.nav li {
+    float: left;
+}
+
+.nav,
+.name {
+    height: 64px;
+    float: left;
+}
+
+.header img {
+    margin-top: 25px;
+}
+
+.header .name {
+    margin-top: 36px;
+}
+
+.header .name h1 {
+    font-size: 18px;
+}
+
+.header .name span {
+    font-size: 10px;
+    float: left;
+}
+
+.nav {
+    margin-top: 36px;
+    margin-left: 65px;
+}
+
+.nav li {
+    padding: 0 22px;
+}
+
+.tu img {
+    width: 100%;
+}
+
+.business {
+    background-color: #F6F8F9;
+    height: 265px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.business h3 {
+    text-align: center;
+    font-weight: normal;
+    font-size: 22px;
+}
+
+.business .item {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.business .item div {
+    display: flex;
+    flex-direction: column;
+}
+
+.section {
+    height: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.section img {
+    margin-right: 50px;
+}
+
+.section>div {
+    width: 550px;
+}
+
+.section .title {
+    color: #B8973F;
+    border-bottom: 2px solid #B8973F;
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+.section .title h2 {
+    font-size: 28px;
+}
+
+.section li {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.section li:nth-of-type(2) {
+    border-bottom: 1px solid #98AACB;
+    color: #98AACB;
+    padding-top: 0;
+}
+
+.section li:last-of-type {
+    color: #B8973F;
+}
+
+.section .last {
+    color: #B8973F;
+}
+
+.section li span {
+    color: #98AACB;
+}
+
+.section2 img {
+    margin-top: -20px;
+}
+
+.introduction {
+    background-color: #F6F8F9;
+    height: 300px;
+    box-sizing: border-box;
+    padding-top: 45px;
+}
+
+.introduction h3 {
+    text-align: center;
+    color: #C89F52;
+    font-weight: normal;
+    font-size: 20px;
+    margin-bottom: 35px;
+}
+
+.introduction p {
+    text-indent: 2em;
+    margin: 10px auto;
+    line-height: 1.8em;
+    font-size: 14px;
+}
+
+.footer {
+    height: 400px;
+    box-sizing: border-box;
+    background-color: #89826F;
+    color: white;
+    padding-top: 30px;
+}
+
+.footer a {
+    color: white;
+}
+
+.footer h3 {
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.footer .link {
+    height: 220px;
+    display: flex;
+    padding-top: 10px;
+}
+
+.footer .link ul {
+    margin-right: 130px;
+    font-size: 14px;
+}
+
+.footer .link li {
+    margin-bottom: 17px;
+}
+
+.footer .link .about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer .about img {
+    margin-bottom: 10px;
+}
+
+.footer .address {
+    padding-top: 20px;
+    border-top: 1px solid white;
+    text-align: center;
+}

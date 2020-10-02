@@ -1,0 +1,25 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    
+} */
+
+table {
+    width: 400px;
+    height: 250px;
+}
+
+h3 {
+    /* text-align: center; */
+    margin-top: 150px;
+}
+
+span {
+    color: #A5A1A0;
+    font-size: 12px;
+}
+
+.denglu {
+    width: 80px;
+    background-color: #2FAACB;
+}

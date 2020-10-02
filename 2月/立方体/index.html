@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            height: 100vh;
+            background-color: skyblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        main {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(15deg) rotateX(45deg);
+            transition: 15s;
+        }
+        
+        main:hover {
+            transform: rotateY(15deg) rotateX(45deg) rotate3d(1, .6, 1, 2400deg);
+        }
+        
+        div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            opacity: .7;
+        }
+        
+        div:nth-child(1) {
+            background-color: slateblue;
+        }
+        
+        div:nth-child(2) {
+            background-color: springgreen;
+            transform-origin: bottom;
+            transform: rotateX(-90deg);
+        }
+        
+        div:nth-child(3) {
+            background-color: steelblue;
+            transform-origin: left;
+            transform: rotateY(-90deg);
+        }
+        
+        div:nth-child(4) {
+            background-color: thistle;
+            transform-origin: right;
+            transform: rotateY(90deg);
+        }
+        
+        div:nth-child(5) {
+            background-color: violet;
+            transform-origin: top;
+            transform: rotateX(-90deg) translateY(-200px);
+        }
+        
+        div:nth-child(6) {
+            background-color: yellow;
+            transform: translateZ(200px);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </main>
+</body>
+
+</html>

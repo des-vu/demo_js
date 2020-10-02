@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: #f4f4f4;
+        }
+        
+        nav {
+            margin-top: 50px;
+            background: rgb(255, 53, 116);
+            height: 40px;
+            line-height: 40px;
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            width: 1200px;
+            margin: 0 auto;
+            list-style: none;
+        }
+        
+        nav ul li {
+            width: 215px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        #fl {
+            width: 1200px;
+            height: 400px;
+            margin: 0 auto;
+            background: #fff;
+        }
+        
+        #fl ul {
+            list-style: none;
+            width: 215px;
+            height: 400px;
+            box-sizing: border-box;
+            border: 2px solid #ff3574;
+            float: left;
+            padding-top: 5px;
+        }
+        
+        #fl ul li {
+            font-size: 14px;
+            cursor: pointer;
+            padding: 0 15px;
+            line-height: 32px;
+            height: 32px;
+        }
+        
+        #fl ul li:hover {
+            color: #ff3574;
+            background: #ffc2d5;
+        }
+        
+        #fl>div {
+            width: 706px;
+            height: 400px;
+            padding: 10px;
+            border: 2px solid #ff3574;
+            border-left: none;
+            float: left;
+            display: none;
+            box-sizing: border-box;
+            background: #fff;
+        }
+        
+        #fl>div>div {
+            font-weight: bold;
+            font-size: 15px;
+            padding: 5px 0;
+            color: #ff3574;
+            cursor: pointer;
+            border-bottom: 1px dashed #999;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>全部分类</li>
+        </ul>
+    </nav>
+    <div id="fl">
+        <ul></ul>
+        <div></div>
+    </div>
+    <script>
+        var fl = document.getElementById('fl');
+        var xhr = new XMLHttpRequest();
+        var arr = [];
+        xhr.open('post', 'https://api.ymduo.com/category/categoryList', true);
+        xhr.setRequestHeader(
+            'Content-Type',
+            'application/x-www-form-urlencoded'
+        )
+        xhr.send('category_id=0');
+        xhr.onreadystatechange = function() {
+            if (xhr.status == 200 && xhr.readyState == 4) {
+                var data = JSON.parse(xhr.responseText).result.data;
+                var str = '';
+                for (var i = 0; i < data.length; i++) {
+                    twoMenu(data[i].category_id);
+                    str += `
+                        <li onmouseenter="show(${i})" onmouseleave="hide()">${data[i].category_cn}</li>
+                    `;
+                }
+                fl.children[0].innerHTML = str;
+            }
+        }
+
+        function twoMenu(id) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('post', 'https://api.ymduo.com/category/categoryList', true);
+            xhr.setRequestHeader(
+                'Content-Type',
+                'application/x-www-form-urlencoded'
+            )
+            xhr.send('category_id=' + id);
+            xhr.onreadystatechange = function() {
+                if (xhr.status == 200 && xhr.readyState == 4) {
+                    var data = JSON.parse(xhr.responseText).result.data;
+                    var str = '';
+                    for (var i = 0; i < data.length; i++) {
+                        str += `
+                            <div>${data[i].category_cn}</div>
+                        `;
+                    }
+                    arr.push(str);
+                }
+            }
+        }
+
+        function show(i) {
+            fl.children[1].style.display = 'block';
+            fl.children[1].innerHTML = arr[i];
+        }
+
+        function hide() {
+            fl.children[1].style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

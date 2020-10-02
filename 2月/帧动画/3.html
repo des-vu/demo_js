@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: grid;
+            grid-template: 1fr/1fr;
+            justify-items: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        div {
+            width: 100vw;
+            height: 100vh;
+            background-color: turquoise;
+            animation-name: scale, rotate, color;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+        
+        @keyframes scale {
+            0% {
+                width: 0;
+                height: 0;
+            }
+        }
+        
+        @keyframes rotate {
+            50% {
+                transform: rotate(-360deg);
+            }
+            from {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes color {
+            30% {
+                background-color: tomato;
+            }
+            60% {
+                background-color: yellow;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    font-size: 15px;
+}
+
+body>header {
+    height: 60px;
+    border-bottom: #169CB1 3px solid;
+    box-shadow: 0 2px 3px #7F7F7F;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.logo {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #17A2B8;
+}
+
+.logo:hover {
+    color: #0F6674;
+}
+
+.nav {
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+label {
+    display: none;
+    padding: 4px 13px;
+    color: #7F7F7F;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.nav input {
+    display: none;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.nav-list Ul {
+    display: flex;
+    margin-left: 10px;
+    list-style: none;
+}
+
+.nav ul li a {
+    padding: 0 12px;
+    color: #7f7f7f;
+    font-weight: bold;
+}
+
+.nav ul li a:hover {
+    color: black;
+}
+
+.nav li:last-child a {
+    color: #28A745;
+}
+
+.login a {
+    display: inline-block;
+    padding: 4px 7px;
+    border: 1px solid #17A2B8;
+    border-radius: 5px;
+}
+
+.login a:nth-child(1) {
+    color: #17A2B8;
+}
+
+.login a:nth-child(1):hover {
+    color: white;
+    background-color: #17A2B8;
+}
+
+.login a:nth-child(2) {
+    color: white;
+    background-color: #17A2B8;
+}
+
+.login a:nth-child(2):hover {
+    background-color: #138496;
+}
+
+@media only screen and (max-width:768px) {
+    .nav {
+        position: relative;
+        padding: 1rem;
+        display: block;
+        width: 85vw;
+    }
+    label {
+        position: absolute;
+        right: 0;
+        top: .5rem;
+        display: inline-block;
+    }
+    .nav-list {
+        display: none;
+    }
+    input:checked+.nav-list {
+        display: block;
+    }
+    body>header {
+        height: auto;
+    }
+    .nav-list ul {
+        display: flex;
+        flex-direction: column;
+        margin: .5rem 0;
+    }
+    .nav-list ul li {
+        padding: .5rem 0;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:960px) {
+    .nav {
+        position: relative;
+        padding: 1rem;
+        display: block;
+        width: 730px;
+    }
+    label {
+        position: absolute;
+        right: 0;
+        top: .5rem;
+        display: inline-block;
+    }
+    .nav-list {
+        display: none;
+    }
+    input:checked+.nav-list {
+        display: block;
+    }
+    body>header {
+        height: auto;
+    }
+    .nav-list ul {
+        display: flex;
+        flex-direction: column;
+        margin: .5rem 0;
+    }
+    .nav-list ul li {
+        padding: .5rem 0;
+    }
+}
+
+@media only screen and (min-width:960px) {
+    .nav {
+        width: 940px;
+    }
+}
+
+@media only screen and (min-width:1200px) {
+    .nav {
+        width: 1180px;
+    }
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var body = document.getElementsByTagName('body')[0];
+        var div = document.createElement('div');
+        var p = document.createElement('p');
+        var text = document.createTextNode('姬成，你最帅！');
+        body.appendChild(div);
+        // document.body.appendChild(div);
+        div.appendChild(p);
+        p.appendChild(text);
+        div.setAttribute('class', 'example');
+        p.setAttribute('class', 'slogan');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-color: #0e141b;
+            overflow: hidden;
+        }
+        
+        .wrapper {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .column,
+        .col {
+            display: inline-block;
+            color: white;
+            opacity: .8;
+            vertical-align: top;
+            font-size: 70px;
+            line-height: 70px;
+        }
+        
+        .column {
+            transition: .2s;
+        }
+        
+        .col {
+            transform: translateY(calc(50vh - 35px));
+        }
+        
+        .visible {
+            opacity: 1;
+        }
+        
+        .close {
+            opacity: 0.45;
+        }
+        
+        .far {
+            opacity: 0.15;
+        }
+        
+        .distance {
+            opacity: 0.15;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="column">
+            <div>0</div>
+            <div>1</div>
+            <div>2</div>
+        </div>
+        <div class="column ten"></div>
+        <div class="col">：</div>
+        <div class="column six"></div>
+        <div class="column ten"></div>
+        <div class="col">：</div>
+        <div class="column six"></div>
+        <div class="column ten"></div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

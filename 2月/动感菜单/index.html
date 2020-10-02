@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        nav {
+            width: 180px;
+            height: 180px;
+            background-color: red;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        nav::after {
+            content: 'knowyourself';
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5em;
+        }
+        
+        nav:hover ul {
+            transform: scale(1);
+        }
+        
+        ul {
+            width: 300px;
+            height: 300px;
+            list-style: none;
+            position: absolute;
+            left: -60px;
+            top: -60px;
+            transform: scale(0);
+            transition: 1s;
+            z-index: -1;
+        }
+        
+        li {
+            width: 80px;
+            height: 80px;
+            background-color: tomato;
+            border-radius: 50%;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: whitesmoke;
+            transform-origin: 150px 150px;
+            transition: 1s;
+        }
+        
+        nav:hover li:nth-child(1) {
+            transform: rotateZ(40deg);
+        }
+        
+        nav:hover li:nth-child(2) {
+            transform: rotateZ(80deg);
+        }
+        
+        nav:hover li:nth-child(3) {
+            transform: rotateZ(120deg);
+        }
+        
+        nav:hover li:nth-child(4) {
+            transform: rotateZ(160deg);
+        }
+        
+        nav:hover li:nth-child(5) {
+            transform: rotateZ(200deg);
+        }
+        
+        nav:hover li:nth-child(6) {
+            transform: rotateZ(240deg);
+        }
+        
+        nav:hover li:nth-child(7) {
+            transform: rotateZ(280deg);
+        }
+        
+        nav:hover li:nth-child(8) {
+            transform: rotateZ(320deg);
+        }
+        
+        nav:hover li:nth-child(9) {
+            transform: rotateZ(360deg);
+        }
+        
+        a {
+            text-decoration: none;
+            color: white;
+            transition: 1s;
+        }
+        
+        nav:hover li:nth-child(1) a {
+            transform: rotate(320deg);
+        }
+        
+        nav:hover li:nth-child(2) a {
+            transform: rotate(280deg);
+        }
+        
+        nav:hover li:nth-child(3) a {
+            transform: rotate(240deg);
+        }
+        
+        nav:hover li:nth-child(4) a {
+            transform: rotate(200deg);
+        }
+        
+        nav:hover li:nth-child(5) a {
+            transform: rotate(160deg);
+        }
+        
+        nav:hover li:nth-child(6) a {
+            transform: rotate(120deg);
+        }
+        
+        nav:hover li:nth-child(7) a {
+            transform: rotate(80deg);
+        }
+        
+        nav:hover li:nth-child(8) a {
+            transform: rotate(40deg);
+        }
+        
+        nav:hover li:nth-child(9) a {
+            transform: rotate(0deg);
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+            <li><a href="">4</a></li>
+            <li><a href="">5</a></li>
+            <li><a href="">6</a></li>
+            <li><a href="">7</a></li>
+            <li><a href="">8</a></li>
+            <li><a href="">9</a></li>
+        </ul>
+    </nav>
+</body>
+
+</html>

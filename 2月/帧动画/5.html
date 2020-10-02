@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        main {
+            display: grid;
+            grid-template: 1fr/1fr;
+            justify-items: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ddd;
+        }
+        
+        div {
+            position: relative;
+            z-index: 1;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(at center left, #E67E22, rgb(255, 119, 0));
+            animation: translate 2s infinite ease-in alternate;
+        }
+        
+        aside {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -60px;
+            margin-top: 20px;
+            width: 120px;
+            height: 40px;
+            border-radius: 50%;
+            filter: blur(10px);
+            background: radial-gradient(at center, black, #ddd);
+            animation: bx 2s infinite ease-in alternate;
+        }
+        
+        @keyframes translate {
+            0% {
+                transform: translateY(-300px);
+            }
+        }
+        
+        @keyframes bx {
+            from {
+                transform: scaleY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div></div>
+        <aside></aside>
+    </main>
+</body>
+
+</html>

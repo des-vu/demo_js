@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: thistle;
+        }
+        
+        div {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 70px;
+            background-color: orange;
+            border: 2px solid white;
+            font-size: 1.7em;
+            color: white;
+        }
+        
+        div::after {
+            content: '';
+            position: absolute;
+            left: 70%;
+            bottom: 30%;
+            width: 4px;
+            height: 4px;
+            animation: point 1.5s infinite;
+        }
+        
+        @keyframes point {
+            30% {
+                box-shadow: 4px 0 currentColor;
+            }
+            60% {
+                box-shadow: 4px 0 currentColor, 12px 0 currentColor;
+            }
+            90% {
+                box-shadow: 4px 0 currentColor, 12px 0 currentColor, 20px 0 currentColor;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>&lt;/&gt;提交</div>
+</body>
+
+</html>

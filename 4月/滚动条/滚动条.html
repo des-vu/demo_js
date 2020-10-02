@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .container {
+            width: 380px;
+            height: 400px;
+            margin: 50px auto;
+            border: 1px solid black;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contents {
+            position: absolute;
+            width: 350px;
+            left: 0;
+            top: 0;
+            background-color: #ccc;
+        }
+        
+        p {
+            padding: 8px;
+            user-select: none;
+        }
+        
+        .scroll {
+            position: absolute;
+            width: 28px;
+            height: 100%;
+            right: 0;
+            top: 0;
+            border-left: 1px solid black;
+        }
+        
+        .scroll .ico {
+            width: 27px;
+            height: 28px;
+            background-color: #ccc;
+            cursor: pointer;
+            text-align: center;
+            line-height: 28px;
+        }
+        
+        .scroll .ico i {
+            font-size: 28px;
+        }
+        
+        .scroll .duration {
+            width: 100%;
+            height: 344px;
+            position: relative;
+        }
+        
+        .scroll .bar {
+            position: absolute;
+            right: 1px;
+            top: 0;
+            width: 100%;
+            background-color: coral;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="contents">
+            <p>There are moments in life when you miss someone so much that you just want to pick them from your dreams and hug them for real! Dream what you want to dream;go where you want to go;be what you want to be,because you have only one life and
+                one chance to do all the things you want to do.</p>
+            <p>May you have enough happiness to make you sweet,enough trials to make you strong,enough sorrow to keep you human,enough hope to make you happy? Always put yourself in others’shoes.If you feel that it hurts you,it probably hurts the other person,
+                too.
+            </p>
+            <p>The happiest of people don’t necessarily have the best of everything;they just make the most of everything that comes along their way.Happiness lies for those who cry,those who hurt, those who have searched,and those who have tried,for only
+                they can appreciate the importance of people</p>
+            <p>who have touched their lives.Love begins with a smile,grows with a kiss and ends with a tear.The brightest future will always be based on a forgotten past, you can’t go on well in lifeuntil you let go of your past failures and heartaches.</p>
+            <p>When you were born,you were crying and everyone around you was smiling.Live your life so that when you die,you're the one who is smiling and everyone around you is crying.</p>
+            <p>Please send this message to those people who mean something to you,to those who have touched your life in one way or another,to those who make you smile when you really need it,to those that make you see the brighter side of things when you
+                are really down,to those who you want to let them know that you appreciate their friendship.And if you don’t, don’t worry,nothing bad will happen to you,you will just miss out on the opportunity to brighten someone’s day with this message.</p>
+            <p>There are moments in life when you miss someone so much that you just want to pick them from your dreams and hug them for real! Dream what you want to dream;go where you want to go;be what you want to be,because you have only one life and
+                one chance to do all the things you want to do.</p>
+            <p>May you have enough happiness to make you sweet,enough trials to make you strong,enough sorrow to keep you human,enough hope to make you happy? Always put yourself in others’shoes.If you feel that it hurts you,it probably hurts the other person,
+                too.
+            </p>
+            <p>There are moments in life when you miss someone so much that you just want to pick them from your dreams and hug them for real! Dream what you want to dream;go where you want to go;be what you want to be,because you have only one life and
+                one chance to do all the things you want to do.</p>
+            <p>May you have enough happiness to make you sweet,enough trials to make you strong,enough sorrow to keep you human,enough hope to make you happy? Always put yourself in others’shoes.If you feel that it hurts you,it probably hurts the other person,
+                too.
+            </p>
+        </div>
+        <ul class="scroll">
+            <li class="ico"><i class="fa fa-angle-up up" aria-hidden="true"></i></li>
+            <li class="duration">
+                <div class="bar"></div>
+            </li>
+            <li class="ico"><i class="fa fa-angle-down down" aria-hidden="true"></i></li>
+        </ul>
+    </div>
+    <script>
+        (function() {
+            var drag = document.getElementsByClassName('bar')[0],
+                scroll = document.getElementsByClassName('duration')[0],
+                container = document.getElementsByClassName('container')[0],
+                contents = document.getElementsByClassName('contents')[0];
+            var dragH = Math.floor((container.offsetHeight / contents.offsetHeight) * scroll.offsetHeight);
+            var scrollTop = scroll.offsetHeight - drag.offsetHeight;
+            var contentTop = contents.offsetHeight - container.offsetHeight;
+            drag.style.height = dragH + 'px';
+            init();
+
+            function init() {
+                dragScrollBar(drag, scroll);
+                btnScroll(drag, scroll);
+                wheelScroll(drag, container, scroll);
+            }
+
+            function dragScrollBar(item, duration) {
+                item.onmousedown = function(e) {
+                    var topY = e.pageY;
+                    document.onmousemove = function(e) {
+                        var chaY = e.pageY - topY;
+                        if (chaY > 0) {
+                            item.style.top = chaY + item.offsetTop + 'px';
+                            if (item.offsetTop + chaY + item.offsetHeight > duration.offsetHeight) {
+                                item.style.top = duration.offsetHeight - item.offsetHeight + 'px';
+                            }
+                        } else {
+                            item.style.top = chaY + item.offsetTop + 'px';
+                            if (item.offsetTop + chaY <= 0) {
+                                item.style.top = '0px';
+                            }
+                        }
+                        topY = e.pageY;
+                        goScroll(item);
+                    }
+                    document.onmouseup = function() {
+                        document.onmousemove = null;
+                    }
+                }
+            }
+
+            function goScroll(item) {
+                var persent = Math.floor(item.offsetTop / (scroll.offsetHeight - drag.offsetHeight) * contentTop);
+                contents.style.top = -persent + 'px';
+            }
+
+            function btnScroll(item, duration) {
+                var box = document.getElementsByTagName('ul')[0];
+                box.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('up')) {
+                        item.style.top = -10 + item.offsetTop + 'px';
+                        if (item.offsetTop <= 0) {
+                            item.style.top = 0 + 'px';
+                        }
+                    } else if (e.target.classList.contains('down')) {
+                        item.style.top = 10 + item.offsetTop + 'px';
+                        if (item.offsetTop + item.offsetHeight > duration.offsetHeight) {
+                            item.style.top = duration.offsetHeight - item.offsetHeight + 'px';
+                        }
+                    }
+                    goScroll(item);
+                })
+            }
+
+            function wheelScroll(item, box, duration) {
+                box.addEventListener('mousewheel', goWheel);
+
+                function goWheel(e) {
+                    e.preventDefault();
+                    if (e.wheelDelta == 150) {
+                        item.style.top = -10 + item.offsetTop + 'px';
+                        if (item.offsetTop <= 0) {
+                            item.style.top = 0 + 'px';
+                        }
+                    } else {
+                        item.style.top = 10 + item.offsetTop + 'px';
+                        if (item.offsetTop + item.offsetHeight > duration.offsetHeight) {
+                            item.style.top = duration.offsetHeight - item.offsetHeight + 'px';
+                        }
+                    }
+                    goScroll(item);
+                }
+            }
+        })()
+    </script>
+</body>
+
+</html>

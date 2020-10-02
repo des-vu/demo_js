@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // break    终止循环（必须写在循环语句里）
+        // 不加的话，第一个符合，后面的不管是否符合都会输出
+        var data = window.prompt('input');
+        switch (data) {
+            case '周一':
+                console.log('working');
+                break;
+            case '周二':
+                console.log('working');
+                break;
+            case '周三':
+                console.log('working');
+                break;
+            case '周四':
+                console.log('working');
+                break;
+            case '周五':
+                console.log('working');
+                break;
+            case '周六':
+                console.log('relaxing');
+                break;
+            case '周日':
+                console.log('relaxing');
+                break;
+        }
+        /* switch (data) {
+            case '周一':
+            case '周二':
+            case '周三':
+            case '周四':
+            case '周五':
+                console.log('working');
+                break;
+            case '周六':
+            case '周日':
+                console.log('relaxing');
+                break;
+        } */
+        var i = 0;
+        while (1) {
+            i++;
+            console.log(i);
+            if (i > 100) {
+                break;
+            }
+        }
+        // while (1) 是死循环，break可以在i > 100时终止while的循环
+        // 在不好控制循环的次数时，又想在特定条件停止时，用if（）{ break；}
+        for (var i = 0; i < 100; i++) {
+            if (i % 7 == 0 || i % 10 == 7) {
+                continue;
+            }
+            console.log(i);
+        }
+    </script>
+</body>
+
+</html>

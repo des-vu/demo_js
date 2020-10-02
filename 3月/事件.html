@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .a1 {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
+        
+        .a2 {
+            width: 100px;
+            height: 100px;
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a1"></div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <div class="a2"></div>
+    <input type="file" multiple="multiple">
+    <script>
+        var div = document.getElementsByClassName('a1')[0];
+        div.onclick = function() {
+            console.log('a');
+            this.style.backgroundColor = 'green';
+            console.log(this);
+        };
+        div.addEventListener('click', function() { //函数引用
+                console.log('b');
+            }, false)
+            // div.addEventListener('click', test, false)
+            // function test() { 函数引用
+            //     console.log('b');
+            // };
+        div.addEventListener('click', function() { //函数引用
+            console.log('c');
+        }, false); //可以绑定多个
+        //执行一次
+        div.addEventListener('click', test);
+        div.addEventListener('click', test);
+
+        function test() {
+            console.log('n');
+        }
+        //执行两次
+        div.addEventListener('click', function test() {
+            console.log('m');
+        });
+        div.addEventListener('click', function test() {
+            console.log('m');
+        });
+        var li = document.getElementsByTagName('li');
+        for (let i = 0; i < li.length; i++) {
+            li[i].addEventListener('click', function() {
+                console.log(i + 1); //数字
+            })
+        }
+        for (var i = 0; i < li.length; i++) {
+            li[i].addEventListener('click', function() {
+                console.log(this.innerHTML); //字符串
+            })
+        }
+        for (var i = 0; i < li.length; i++) { //闭包（立即执行函数）
+            (function(i) {
+                li[i].addEventListener('click', function() {
+                    console.log(i);
+                })
+            }(i))
+        }
+        div.onclick = function() {
+            this.style.backgroundColor = 'green';
+            console.log('a');
+            this.onclick = function() {
+                div.style.backgroundColor = 'red';
+                console.log(this);
+            };
+        }
+        document.onclick = function() {
+            console.log('low');
+            console.log(event);
+        }
+        div.onclick = function(event) {
+            event.stopPropagation();
+            this.style.backgroundColor = 'blue';
+        }
+        document.oncontextmenu = function() {
+            // return false;
+            event.returnValue();
+        }
+        div.onmousemove = function() {
+            div.style.backgroundColor = 'red';
+        }
+        document.onmousedown = function() {
+            console.log(event);
+        }
+        document.onkeypress = function(e) {
+            console.log(e);
+            console.log(String.fromCharCode(e.keyCode));
+        }
+        div.onclick = function(e) {
+            console.log(e);
+        }
+    </script>
+</body>
+
+</html>

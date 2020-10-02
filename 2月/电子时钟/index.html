@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: thistle;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        main {
+            width: 500px;
+            height: 500px;
+            background-color: steelblue;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        main div:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            background-color: thistle;
+            border-radius: 50%;
+        }
+        
+        main div:nth-child(n+2) {
+            position: absolute;
+            width: 180px;
+            height: 8px;
+            background-color: white;
+            transform-origin: left center;
+        }
+        
+        main div:nth-child(2) {
+            transform: translateX(90px) rotate(30deg);
+        }
+        
+        main div:nth-child(3) {
+            transform: translateX(90px) rotate(60deg);
+        }
+        
+        main div:nth-child(4) {
+            transform: translateX(90px) rotate(90deg);
+        }
+        
+        main div:nth-child(5) {
+            transform: translateX(90px) rotate(120deg);
+        }
+        
+        main div:nth-child(6) {
+            transform: translateX(90px) rotate(150deg);
+        }
+        
+        main div:nth-child(7) {
+            transform: translateX(90px) rotate(180deg);
+        }
+        
+        main div:nth-child(8) {
+            transform: translateX(90px) rotate(210deg);
+        }
+        
+        main div:nth-child(9) {
+            transform: translateX(90px) rotate(240deg);
+        }
+        
+        main div:nth-child(10) {
+            transform: translateX(90px) rotate(270deg);
+        }
+        
+        main div:nth-child(11) {
+            transform: translateX(90px) rotate(300deg);
+        }
+        
+        main div:nth-child(12) {
+            transform: translateX(90px) rotate(330deg);
+        }
+        
+        main div:nth-child(13) {
+            transform: translateX(90px) rotate(360deg);
+        }
+        
+        main div:nth-child(14) {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            border-radius: 50%;
+            background-color: thistle;
+        }
+        
+        main div:nth-child(14)::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: white;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            z-index: 1;
+        }
+        
+        main div:nth-child(15) {
+            width: 120px;
+            height: 8px;
+            background-color: coral;
+            left: 250px;
+        }
+        
+        main div:nth-child(16) {
+            width: 80px;
+            height: 8px;
+            background-color: cornflowerblue;
+            left: 250px;
+            transform: rotate(-60deg);
+        }
+        
+        main div:nth-child(17) {
+            width: 50px;
+            height: 8px;
+            background-color: deepskyblue;
+            left: 250px;
+            transform: rotate(-90deg);
+        }
+        
+        body:hover main div:nth-child(15) {
+            transition-duration: 600s;
+            transition-timing-function: steps(600, start);
+            transform-origin: left center;
+            transform: rotate(3600deg);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </main>
+</body>
+
+</html>

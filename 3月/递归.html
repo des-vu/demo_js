@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 阶乘
+        function jc(n) {
+            return n == 1 ? n : n * jc(--n);
+        }
+        // 累加
+        function num() {
+            var count = 0;
+            for (var i = 0; i < arguments.length; i++) {
+                count += arguments[i];
+            }
+            return count;
+        }
+
+        function num1(...arg) {
+            return arg.length == 0 ? 0 : arg.pop() + num1(...arg);
+        }
+        // 打印倒三角
+        function star(sum) {
+            if (sum == 0) {
+                return;
+            }
+            document.write('*'.repeat(sum) + '<br>');
+            star(--sum);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        tr img {
+            width: 80px;
+            height: 80px;
+        }
+        
+        tr input {
+            width: 20px;
+        }
+        
+        table {
+            width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .total {
+            width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1 align="center">购物车</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>选择</th>
+                    <th>图片</th>
+                    <th>商品</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>金额</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div class="total">
+            <div>
+                <label>
+                    全选<input type="checkbox" id="allCheck" />
+                </label>
+            </div>
+            <a href="javascript:void(0)">删除选中商品</a>
+            <div>
+                应支付总金额:
+                <span style="color: red;" class="cj"></span>
+            </div>
+            <div>已选择<span class="count"></span></div>
+        </div>
+    </div>
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script>
+        var timer = null;
+        render();
+        $('.total a').click(function() {
+            $.ajax({
+                url: 'http://127.0.0.166:3000/user/car_show',
+                type: 'post',
+                success: function(res) {
+                    var arr = [];
+                    $.each(res, function(index, val) {
+                        if (val.is_checked == 'true') {
+                            arr.push(val.sp_id);
+                        }
+                    })
+                    del(arr);
+                }
+            })
+        })
+        $('#allCheck').click(function() {
+            var check = $(this).prop('checked');
+            $('tr input[type=checkbox]').prop('checked', check);
+            $.ajax({
+                url: 'http://127.0.0.166:3000/user/car_show',
+                type: 'post',
+                success: function(res) {
+                    var arrId = [];
+                    $.each(res, function(index, val) {
+                        arrId.push(val.sp_id);
+                    })
+                    updateChecked(arrId, check);
+                }
+            })
+        })
+
+        function updateChecked(arrId, check) {
+            arrId = JSON.stringify(arrId);
+            $.ajax({
+                url: 'http://127.0.0.166:3000/user/checked_update',
+                type: 'post',
+                data: {
+                    sp_id: arrId,
+                    is_checked: check
+                },
+                success: function(res) {
+                    $.ajax({
+                        url: 'http://127.0.0.166:3000/user/car_show',
+                        type: 'post',
+                        success: function(res) {
+                            count(res);
+                            if (JSON.parse(arrId).length == 1) {
+                                checkedAll(res);
+                            }
+                        }
+                    })
+                }
+            })
+        }
+
+        function render() {
+            $.ajax({
+                url: 'http://127.0.0.166:3000/user/car_show',
+                type: 'post',
+                success: function(res) {
+                    count(res);
+                    checkedAll(res);
+                    if (res.length != 0) {
+                        var str = '';
+                        $.each(res, function(index, val) {
+                            str += `
+                            <tr>
+                                <td><input id="${val.sp_id}" type="checkbox" ${val.is_checked == 'true' ? 'checked' : ''} /></td>
+                                <td><img src="${val.img}" alt="" /></td>
+                                <td width="500px">${val.sp_name}</td>
+                                <td>${val.price}</td>
+                                <td sp_id="${val.sp_id}">
+                                    <button onclick=plus_minus('minus',${index})>-</button>
+                                    <input type="text" value="${val.num}" class="n" onblur="g_num(${val.sp_id},this.value,${index})" />
+                                    <button onclick=plus_minus('plus',${index})>+</button>
+                                </td>
+                                <td class="price">${(val.num * val.price).toFixed(2)}</td>
+                                <td><button onclick=del("${val.sp_id}")>删除</button></td>
+                            </tr>
+                            `;
+                        })
+                        $('tbody').html(str);
+                        $('tr input[type=checkbox]').click(function() {
+                            var id = $(this).attr('id');
+                            var check = $(this).prop('checked')
+                            var arr = [id];
+                            updateChecked(arr, check);
+                        })
+                    } else {
+                        $('tbody').html('您的购物车中暂时没有商品');
+                    }
+                }
+            })
+        }
+
+        function count(res) {
+            var n = 0;
+            var countPrice = 0;
+            $.each(res, function(index, val) {
+                if (res[index].is_checked == 'true') {
+                    n = n + Number(val.num);
+                    countPrice += val.price * val.num;
+                }
+            })
+            $('.count').html(n + '件');
+            $('.cj').html(countPrice + '元');
+        }
+
+        function del(idArr) {
+            var arr = [];
+            if (Array.isArray(idArr)) {
+                arr = idArr;
+            } else {
+                arr.push(idArr);
+            }
+            arr = JSON.stringify(arr);
+            $.ajax({
+                url: 'http://127.0.0.166:3000/user/car_del',
+                type: 'post',
+                data: {
+                    sp_id: arr
+                },
+                success: function(res) {
+                    if (res.success) {
+                        alert(res.success);
+                        render();
+                    } else {
+                        alert(res.err);
+                    }
+                }
+            })
+        }
+
+        function plus_minus(btn, i) {
+            var num = Number($('.n').eq(i).val());
+            if (num < 1 && btn == 'minus') {
+                return;
+            }
+            if (btn == 'plus') {
+                num++;
+            } else if (btn == 'minus') {
+                num--;
+            }
+            var id = $('.n').eq(i).parent().attr('sp_id');
+            g_num(id, num, i)
+            $('.n').eq(i).val(num);
+        }
+
+        function g_num(id, num, i) {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(function() {
+                $.ajax({
+                    url: 'http://127.0.0.166:3000/user/car_num_update',
+                    type: 'post',
+                    data: {
+                        sp_id: id,
+                        num: num
+                    },
+                    success: function(res) {
+                        $.ajax({
+                            url: 'http://127.0.0.166:3000/user/car_show',
+                            type: 'post',
+                            success: function(res) {
+                                $('.price').eq(i).html((parseInt(res[i].price) * res[i].num).toFixed(2));
+                                count(res);
+                            }
+                        })
+                    }
+                })
+            }, 300);
+        }
+
+        function checkedAll(res) {
+            if (res.length == 0) {
+                return;
+            }
+            var key = true;
+            $.each(res, function(index, val) {
+                if (val.is_checked != 'true') {
+                    key = false;
+                }
+            })
+            $('#allCheck').prop('checked', key);
+        }
+    </script>
+</body>
+
+</html>

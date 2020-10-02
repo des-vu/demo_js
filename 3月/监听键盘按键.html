@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <input type="password" name="1">
+    </form>
+    <script>
+        var input = document.getElementsByTagName('input')[0];
+        var password = '';
+        input.onkeypress = function(e) {
+            password += String.fromCharCode(e.charCode);
+        }
+        input.onblur = function() {
+            console.log(password);
+        }
+    </script>
+</body>
+
+</html>

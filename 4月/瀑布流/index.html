@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .water {
+            width: 95%;
+            position: relative;
+            margin: 30px auto;
+        }
+        
+        .water img {
+            transition: .5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="water"></div>
+    <script src="index.js"></script>
+    <script>
+        var div = document.getElementsByClassName('water')[0];
+        var img = [];
+        for (var i = 0; i < 35; i++) {
+            img.push('./images/' + (i + 1) + '.jpg');
+        }
+        for (var i = 0; i < 7; i++) {
+            img.push('./images/' + (i + 1) + '.jpg');
+        }
+        createWaterFall(div, img, 186);
+    </script>
+</body>
+
+</html>

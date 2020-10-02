@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        main {
+            width: 100vw;
+            height: 100vh;
+            background-color: blanchedalmond;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        main>div {
+            width: 200px;
+            height: 50px;
+            border: 2px red solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        div::before {
+            content: '';
+            width: 0;
+            height: 50px;
+            position: absolute;
+            background-color: red;
+            transform: skewX(-45deg);
+            transition: 1s;
+            z-index: -1;
+        }
+        
+        main>div:hover::before {
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div>
+            knowyourself
+        </div>
+    </main>
+</body>
+
+</html>

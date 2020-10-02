@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1、简单使用 函数就是另一种形式的变量
+        function test() {
+            var a = 123;
+            var b = 234;
+            var c = a + b;
+            document.write(c);
+        }
+        test();
+        // 命名函数表达式
+        var test1 = function test1() {
+                document.write('a');
+            }
+            // 匿名函数表达式 -- 函数表达式
+        var demo = function() {
+                document.write('b');
+            }
+            // 形式参数 -- 形参
+        function test2(a, b) {
+            document.write(a + b);
+        }
+        // 实际参数 -- 实参
+        test2(1, 2);
+        // arguments -- [ ]类似于数组
+        function sum(a) {
+            // arguments -- [11,2,3,4] 实参列表
+            for (var i = 0; i < arguments.length; i++) {
+                console.log(arguments[i]);
+            }
+        }
+        sum(11, 2, 3, 4);
+        // 形参与实参个数比较
+        function sum1(a, b, c, d) {
+            if (sum1.length > arguments.length) {
+                console.log('形参多了');
+            } else if (sum1.length < arguments.length) {
+                console.log('实参多了');
+            } else {
+                console.log('相等');
+            }
+        }
+        // 不设形参的好处 任意数的和
+        function sum2() {
+            var result = 0;
+            for (var i = 0; i < arguments.length; i++) {
+                result += arguments[i];
+            }
+            console.log(result);
+        }
+        sum2();
+        // 映射  一个变另一个跟着变
+        function sum3(a, b) {
+            // arguments [1,2]
+            // var a = 1;
+            a = 2;
+            // console.log(a);  2
+            arguments[0] = 3;
+            console.log(a); //3
+        }
+        sum3(1.2);
+        // 实参只传了一个，形参有两个，这时b没有值还映射吗(不映射)
+        function sum4(a, b) {
+            b = 2;
+            console.log(arguments[1]); //undefined
+        }
+        sum4(1); //实参列表有几个，形参就有几个不能往形参里加，没有映射规则
+        function sum() {
+            return 123;
+        }
+        var num = sum();
+        // 把一个值返回到函数外，放到num中
+        function myNumber(target) {
+            // var ab = Number(target);
+            // return ab;
+            return +target;
+        }
+        var num = myNumber();
+        console.log(num);
+    </script>
+</body>
+
+</html>

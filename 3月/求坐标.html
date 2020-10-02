@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: relative;
+            /* box-sizing: border-box; */
+            padding: 50px;
+            border: 2px solid red;
+        }
+        
+        .B {
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a">
+        <div class="B">
+            <div class="c">
+                <div class="d">
+                    <div class="e"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var e = document.getElementsByClassName('e')[0];
+        var d = document.getElementsByClassName('d')[0];
+        var c = document.getElementsByClassName('c')[0];
+        var body = document.getElementsByTagName('body')[0];
+        var x = 0,
+            y = 0;
+
+        function getElementPosition(elem) {
+            x += elem.offsetLeft;
+            y += elem.offsetTop;
+            if (elem.offsetParent === body) {
+                console.log('b');
+                return x;
+            } else {
+                console.log('a');
+                console.log([x, y]);
+                getElementPosition(elem.offsetParent);
+            }
+        }
+        var n = getElementPosition(e);
+        console.log(n);
+
+        function test() {
+            console.log('s');
+            return 3
+        }
+        test();
+        console.log(test());
+        var date = new Date();
+    </script>
+</body>
+
+</html>

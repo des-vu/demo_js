@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        body {
+            background: url(../images/6.jpg) no-repeat;
+            background-size: cover;
+        }
+        
+        .wrapper {
+            margin: 80px auto;
+            width: 500px;
+        }
+        
+        canvas {
+            border: 2px solid #fdcb6e;
+            background-color: white;
+        }
+        
+        ul {
+            margin-top: 20px;
+            width: 500px;
+            text-align: center;
+        }
+        
+        li {
+            display: inline-block;
+            margin-left: 17px;
+        }
+        
+        input {
+            padding: 5px 10px;
+            vertical-align: middle;
+            border-radius: 5px;
+            border: 1px solid #2d3436;
+            cursor: pointer;
+            background-color: #ffeaa7;
+            color: #2d3436;
+            transition: .2s;
+            outline: none;
+        }
+        
+        input:hover {
+            background-color: #55efc4;
+            border: 1px solid #e84393;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <canvas width="600" height="400"></canvas>
+        <ul>
+            <li><input type="color" class="color"></li>
+            <li><input type="button" value="清屏" class="clear"></li>
+            <li><input type="button" value="橡皮" class="eraser"></li>
+            <li><input type="button" value="撤销" class="rescind"></li>
+            <li><input type="range" class="line" min="1" max="10" value="1"></li>
+        </ul>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

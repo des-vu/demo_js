@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box"></div>
+    <div class="wrap">
+        <button>remove</button>
+    </div>
+    <ul class="clone">
+        <li>clone</li>
+    </ul>
+    <div class="replace">
+        <p>servers</p>
+        <p>sort</p>
+    </div>
+    <script src="./jquery.js"></script>
+    <script>
+        $(function() {
+            //后置追加
+            $('.box').append('<div class="ab"></div>');
+            $('<div>Hello World</div>').appendTo($('.box'));
+            $('.ab').appendTo('body');
+            console.log($('box').css('color', 'red'));
+            $('<h2>老low了</h2>').appendTo($('.box')).css('color', 'yellow').click(function() {
+                console.log($(this).text());
+            });
+            //前置追加
+            $('.box').prepend('<a href=#>百度一下</a>');
+            $('<a href=#>百度一下2</a>').prependTo('.box');
+            //指定元素前后
+            $('.box').after('useIG福布斯付不舒服');
+            $('<h1>hello</h1>').insertAfter($('a:eq(0)'));
+            //删除节点
+            $('.wrap button').click(function() {
+                //剪切
+                // $(this).remove();既删除节点，又删除节点上的事件
+                // $(this).detach();不删除事件
+                console.log($(this).detach());
+                //清空
+                // $('.box').empty();
+                console.log($('.box').text());
+                console.log($('.box').html(''));
+            });
+            //克隆
+            $('.clone li').click(function() {
+                $(this).clone(true).appendTo($('.clone'));
+            });
+            //替换
+            // $('.replace p').replaceWith('<li>sky</li>');
+            $('<li>aky</li>').replaceAll('.replace p');
+            //父节点
+            $().wrap(); //添加父节点
+            $().unwrap(); //删除父节点
+            $().wrapInner(); //子内容添加标签
+        })
+    </script>
+</body>
+
+</html>

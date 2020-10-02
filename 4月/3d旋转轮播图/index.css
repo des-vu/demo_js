@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    margin: 200px auto 0;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 800px;
+    width: 400px;
+    height: 240px;
+}
+
+img {
+    user-select: none;
+    position: absolute;
+    width: 400px;
+    height: 240px;
+    border-radius: 8px;
+    transition: .5s;
+}

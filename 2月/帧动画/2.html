@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: grid;
+            grid-template: 1fr/1fr;
+            justify-items: center;
+            align-items: center;
+            height: 100vh;
+            background-color: skyblue;
+        }
+        
+        main {
+            width: 400px;
+            height: 400px;
+            border: white 2px solid;
+        }
+        
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            animation-name: translate;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+        }
+        
+        @keyframes translate {
+            25% {
+                transform: translateX(300px);
+            }
+            50% {
+                transform: translate(300px, 300px);
+                border-radius: 50%;
+                background-color: tomato;
+            }
+            75% {
+                transform: translateY(300px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div></div>
+    </main>
+</body>
+
+</html>
